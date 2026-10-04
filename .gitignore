@@ -1,0 +1,22 @@
+# OS / Python junk
+.DS_Store
+__pycache__/
+*.pyc
+
+# Virtual environments (rebuild from requirements.txt)
+.venv/
+venv/
+
+# Build output
+planners/forzaeth/build_cache/
+*_backup_*.patch
+
+# Downloaded AutoDRIVE macOS apps (release 2026-iros; files exceed GitHub's 100 MB limit)
+autodrive/simulator/
+autodrive/simulator_multitrack/
+
+# Third-party papers (link them instead)
+docs/F1Tenth_Papers/
+
+# Course lab work stays local
+gym_ros_workspace/labs/

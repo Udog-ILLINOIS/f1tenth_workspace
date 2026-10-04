@@ -1,0 +1,45 @@
+<!-- ForzaETH base system on AutoDRIVE. Mirrors stack_master/base_system_launch.xml's
+     sim branch, with the adapter in place of f1tenth_gym_ros (AutoDRIVE gives ground-truth
+     pose, so no state estimation). Needs fast_bridge running and the sim connected. -->
+<launch>
+  <arg name="map_name" default="autodrive_roboracer" />
+  <let name="map_path" value="$(find-pkg-share stack_master)/maps/$(var map_name)" />
+
+  <node pkg="autodrive_forzaeth" exec="adapter" name="autodrive_adapter" output="screen">
+    <param from="$(find-pkg-share autodrive_forzaeth)/config/adapter.yaml" />
+  </node>
+
+  <node pkg="nav2_map_server" exec="map_server" name="map_server">
+    <param name="yaml_filename" value="$(var map_path)/$(var map_name).yaml" />
+    <param name="topic_name" value="map" />
+    <param name="frame_id" value="map" />
+  </node>
+  <node pkg="nav2_lifecycle_manager" exec="lifecycle_manager" name="lifecycle_manager_map">
+    <param name="autostart" value="true" />
+    <param name="node_names" value="[map_server]" />
+  </node>
+
+  <include file="$(find-pkg-share frenet_odom_republisher)/launch/frenet_odom_republisher_launch.xml" />
+
+  <node pkg="stack_master" name="global_parameters" exec="global_parameter_node">
+    <param name="racecar_version" value="SIM" />
+    <param name="sim" value="True" />
+    <param name="map_path" value="$(var map_path)" />
+  </node>
+
+  <include file="$(find-pkg-share global_planner)/launch/global_trajectory_publisher_launch.xml">
+    <arg name="map_path" value="$(var map_path)" />
+  </include>
+
+  <node pkg="sector_tuner" name="sector_tuner" exec="sector_tuner">
+    <param name="map_name" value="$(var map_name)" />
+    <param from="$(var map_path)/speed_scaling.yaml" />
+  </node>
+  <node pkg="sector_tuner" name="ot_interpolator" exec="ot_interpolator">
+    <param name="map_name" value="$(var map_name)" />
+    <param from="$(var map_path)/ot_sectors.yaml" />
+  </node>
+
+  <node pkg="lap_analyser" name="lap_analyser" exec="lap_analyser" output="screen" />
+  <node pkg="foxglove_bridge" exec="foxglove_bridge" name="foxglove_bridge" />
+</launch>

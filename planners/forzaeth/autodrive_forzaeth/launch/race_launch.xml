@@ -1,0 +1,33 @@
+<!-- Time trials on AutoDRIVE + the run logger. Start base_launch.xml first.
+     Same as stack_master/time_trials_launch.xml, except LU_table is actually forwarded
+     (upstream declares it but never passes it, so the controller falls back to a
+     NUC5 table that isn't shipped). -->
+<launch>
+  <arg name="map_name" default="autodrive_roboracer" />
+  <arg name="raceline" default="default" />
+  <arg name="ctrl_algo" default="MAP" />
+  <arg name="LU_table" default="SIM_linear" />
+  <arg name="max_laps" default="0" />
+  <arg name="runs_dir" default="/home/$(env USER)/ws/runs" />
+
+  <include file="$(find-pkg-share controller)/launch/controller_launch.xml">
+    <arg name="mode" value="$(var ctrl_algo)" />
+    <arg name="LU_table" value="$(var LU_table)" />
+    <arg name="param_file" value="$(find-pkg-share stack_master)/config/state_machine_params.yaml" />
+    <arg name="mapping" value="False" />
+  </include>
+
+  <include file="$(find-pkg-share state_machine)/launch/state_machine_launch.xml">
+    <arg name="param_file" value="$(find-pkg-share stack_master)/config/state_machine_params.yaml" />
+    <arg name="mode" value="timetrials" />
+    <arg name="overtake_mode" value="dummy" />
+  </include>
+
+  <!-- with max_laps > 0 the logger exits after that many laps and takes the launch down -->
+  <node pkg="autodrive_forzaeth" exec="run_logger" name="run_logger" output="screen" emulate_tty="true" on_exit="shutdown">
+    <param name="raceline" value="$(var raceline)" />
+    <param name="map_yaml" value="$(find-pkg-share stack_master)/maps/$(var map_name)/$(var map_name).yaml" />
+    <param name="max_laps" value="$(var max_laps)" />
+    <param name="runs_dir" value="$(var runs_dir)" />
+  </node>
+</launch>

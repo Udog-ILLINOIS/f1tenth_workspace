@@ -1,0 +1,13 @@
+free_thresh: 0.196
+image: pf_map.png
+initial_pose:
+- 0.741
+- 3.156
+- -1.5707362941372025
+negate: 0
+occupied_thresh: 0.65
+origin:
+- -4.658999999999999
+- -9.443999999999996
+- 0.0
+resolution: 0.05

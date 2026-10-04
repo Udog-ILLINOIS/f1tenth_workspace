@@ -1,0 +1,240 @@
+{
+  "raceline": "autodrive_roboracer_il_line_x0.5",
+  "laps_completed": 0,
+  "valid_laps": 0,
+  "crashes": 10,
+  "best_lap_s": null,
+  "best_lap_is_flying": false,
+  "mean_lap_s": null,
+  "std_lap_s": null,
+  "max_speed_mps": 3.711,
+  "mean_speed_mps": null,
+  "min_wall_dist_m": null,
+  "laps": [
+    {
+      "lap": 1,
+      "lap_time_s": 7.031,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.669,
+      "mean_speed_mps": 2.374,
+      "min_wall_dist_m": 0.017,
+      "distance_m": 17.18,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 2,
+      "lap_time_s": 6.156,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.711,
+      "mean_speed_mps": 2.435,
+      "min_wall_dist_m": 0.027,
+      "distance_m": 15.02,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 3,
+      "lap_time_s": 6.13,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.71,
+      "mean_speed_mps": 2.412,
+      "min_wall_dist_m": 0.013,
+      "distance_m": 14.97,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 4,
+      "lap_time_s": 6.144,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.703,
+      "mean_speed_mps": 2.423,
+      "min_wall_dist_m": 0.011,
+      "distance_m": 15.45,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 5,
+      "lap_time_s": 6.154,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.706,
+      "mean_speed_mps": 2.423,
+      "min_wall_dist_m": 0.022,
+      "distance_m": 15.52,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 6,
+      "lap_time_s": 6.14,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.708,
+      "mean_speed_mps": 2.452,
+      "min_wall_dist_m": 0.003,
+      "distance_m": 15.44,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 7,
+      "lap_time_s": 6.171,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.702,
+      "mean_speed_mps": 2.437,
+      "min_wall_dist_m": 0.011,
+      "distance_m": 15.51,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 8,
+      "lap_time_s": 6.16,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.706,
+      "mean_speed_mps": 2.436,
+      "min_wall_dist_m": 0.008,
+      "distance_m": 15.46,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 9,
+      "lap_time_s": 6.146,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.708,
+      "mean_speed_mps": 2.444,
+      "min_wall_dist_m": 0.005,
+      "distance_m": 15.45,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 10,
+      "lap_time_s": 6.2,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 3.705,
+      "mean_speed_mps": 2.411,
+      "min_wall_dist_m": 0.036,
+      "distance_m": 15.13,
+      "sim_lap_time_s": null
+    }
+  ],
+  "crash_events": [
+    {
+      "t_s": 14.87,
+      "lap": 1,
+      "type": "collision",
+      "x": -1.26,
+      "y": -2.15,
+      "speed_mps": 2.77,
+      "min_wall_dist_m": 0.017,
+      "reset": 1
+    },
+    {
+      "t_s": 22.04,
+      "lap": 2,
+      "type": "collision",
+      "x": -1.7,
+      "y": -2.15,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.006,
+      "reset": 1
+    },
+    {
+      "t_s": 29.21,
+      "lap": 3,
+      "type": "collision",
+      "x": -1.71,
+      "y": -2.16,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.013,
+      "reset": 1
+    },
+    {
+      "t_s": 36.38,
+      "lap": 4,
+      "type": "collision",
+      "x": -1.26,
+      "y": -2.15,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.011,
+      "reset": 1
+    },
+    {
+      "t_s": 43.54,
+      "lap": 5,
+      "type": "collision",
+      "x": -1.26,
+      "y": -2.15,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.022,
+      "reset": 1
+    },
+    {
+      "t_s": 50.73,
+      "lap": 6,
+      "type": "collision",
+      "x": -1.26,
+      "y": -2.15,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.003,
+      "reset": 1
+    },
+    {
+      "t_s": 57.91,
+      "lap": 7,
+      "type": "collision",
+      "x": -1.26,
+      "y": -2.15,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.011,
+      "reset": 1
+    },
+    {
+      "t_s": 65.1,
+      "lap": 8,
+      "type": "collision",
+      "x": -1.26,
+      "y": -2.15,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.008,
+      "reset": 1
+    },
+    {
+      "t_s": 72.28,
+      "lap": 9,
+      "type": "collision",
+      "x": -1.26,
+      "y": -2.15,
+      "speed_mps": 2.79,
+      "min_wall_dist_m": 0.005,
+      "reset": 1
+    },
+    {
+      "t_s": 79.48,
+      "lap": 10,
+      "type": "collision",
+      "x": -1.71,
+      "y": -2.16,
+      "speed_mps": 2.78,
+      "min_wall_dist_m": 0.016,
+      "reset": 1
+    }
+  ],
+  "track": "autodrive_roboracer",
+  "line": "il_line",
+  "speed_scaling": 0.5
+}

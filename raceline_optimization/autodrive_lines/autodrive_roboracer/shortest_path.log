@@ -1,0 +1,7 @@
+Spline approximation: mean deviation 0.03m, maximum deviation 0.09m
+Solver runtime opt_shortest_path: 0.004s
+INFO: Estimated laptime: 7.78s
+INFO: Runtime from import to final trajectory was 0.10s
+WARNING: Minimum distance to boundaries is estimated to 0.10m. Keep in mind that the distance can also lie on the outside of the track!
+WARNING: Curvature limit is exceeded: 3.064rad/m
+INFO: Finished export of trajectory: 12:56:07

@@ -1,0 +1,28 @@
+{
+  "experiment": "raceline_comparison",
+  "raceline": "autodrive_roboracer_min_time_from_il_x0.5",
+  "track": "autodrive_roboracer",
+  "line": "min_time_from_il",
+  "speed_scaling": 0.5,
+  "timed_laps_requested": 10,
+  "map": "autodrive_roboracer",
+  "controller": "MAP",
+  "lu_table": "SIM_linear",
+  "recorded": "2026-10-04T14:09:13",
+  "raceline_info": "Imported raceline min_time_from_il from mintime_from_f1nn.csv; estimated lap time: 6.245s; maximum speed: 7.279m/s; ",
+  "simulator": "AutoDRIVE RoboRacer 2026-iros (practice, macOS)",
+  "forzaeth": {
+    "branch": "ros2-humble",
+    "commit": "458132fba2d84cbd65c502fe7a54be47b6b4f31a",
+    "local_patches": [
+      "stack_master/setup.py                                     | 2 +-",
+      " utilities/nodes/sector_tuner/sector_tuner/sector_tuner.py | 8 +++++---",
+      " 2 files changed, 6 insertions(+), 4 deletions(-)"
+    ]
+  },
+  "files": {
+    "global_waypoints.json": "exact waypoints + speed profile driven (before speed scaling)",
+    "speed_scaling.yaml": "ForzaETH sector speed scaling used",
+    "raceline_source.csv": "raceline as generated (TUM traj_race_cl format), if imported"
+  }
+}

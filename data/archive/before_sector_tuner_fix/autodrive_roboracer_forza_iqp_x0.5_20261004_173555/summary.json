@@ -1,0 +1,33 @@
+{
+  "raceline": "autodrive_roboracer_forza_iqp_x0.5",
+  "laps_completed": 1,
+  "valid_laps": 1,
+  "crashes": 0,
+  "best_lap_s": 19.364,
+  "best_lap_is_flying": false,
+  "mean_lap_s": 19.364,
+  "std_lap_s": null,
+  "max_speed_mps": 4.449,
+  "mean_speed_mps": 1.521,
+  "min_wall_dist_m": 0.145,
+  "laps": [
+    {
+      "lap": 1,
+      "lap_time_s": 19.364,
+      "valid": 1,
+      "start": "standing",
+      "crashes": 0,
+      "max_speed_mps": 4.449,
+      "mean_speed_mps": 1.521,
+      "min_wall_dist_m": 0.145,
+      "distance_m": 27.63,
+      "sim_lap_time_s": 33.146400451660156
+    }
+  ],
+  "crash_events": [],
+  "track": "autodrive_roboracer",
+  "line": "forza_iqp",
+  "speed_scaling": 0.5,
+  "original_run_name": "20261004_173555_forza_iqp_x0.5",
+  "original_label": "forza_iqp_x0.5"
+}

@@ -1,0 +1,3 @@
+lap,lap_time_s,valid,crashes,max_speed_mps,mean_speed_mps,min_wall_dist_m,distance_m
+1,11.246,0,1,4.08,2.461,0.016,27.76
+2,11.269,1,0,4.749,2.436,0.123,27.57

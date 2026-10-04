@@ -1,0 +1,5 @@
+t_s,lap,type,x,y,speed_mps,min_wall_dist_m
+0.04,0,contact,0.49,0.06,0.0,0.0
+18.14,0,contact,0.88,-2.27,3.45,0.0
+25.64,0,contact,0.93,-3.0,2.13,0.0
+39.74,1,contact,1.08,-1.44,3.8,0.02

@@ -1,0 +1,17 @@
+<!-- Map an AutoDRIVE track: adapter + ground-truth mapper (+ optional autopilot) + Foxglove.
+     Needs fast_bridge already running and the sim connected (./forzaeth.sh bridge). -->
+<launch>
+  <arg name="map_name" default="autodrive_roboracer" />
+  <arg name="autopilot" default="true" />
+  <arg name="autopilot_speed" default="1.5" />
+
+  <node pkg="autodrive_forzaeth" exec="adapter" name="autodrive_adapter" output="screen">
+    <param from="$(find-pkg-share autodrive_forzaeth)/config/adapter.yaml" />
+  </node>
+  <node pkg="autodrive_forzaeth" exec="mapper" name="autodrive_mapper" output="screen" emulate_tty="true" on_exit="shutdown">
+    <param name="map_name" value="$(var map_name)" />
+    <param name="autopilot" value="$(var autopilot)" />
+    <param name="autopilot_speed" value="$(var autopilot_speed)" />
+  </node>
+  <node pkg="foxglove_bridge" exec="foxglove_bridge" name="foxglove_bridge" />
+</launch>

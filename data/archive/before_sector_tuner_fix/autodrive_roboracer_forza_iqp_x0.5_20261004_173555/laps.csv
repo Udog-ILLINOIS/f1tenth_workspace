@@ -1,0 +1,2 @@
+lap,lap_time_s,valid,start,crashes,max_speed_mps,mean_speed_mps,min_wall_dist_m,distance_m,sim_lap_time_s
+1,19.364,1,standing,0,4.449,1.521,0.145,27.63,33.146400451660156

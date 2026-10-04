@@ -1,0 +1,136 @@
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/raceline_optimization/tum_optimizer/helper_funcs_glob/src/prep_track.py:79: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Norisring: TUM prep_track failed (At least two spline normals are crossed, check input or increase smoothing factor!); skipped
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmpx_sumt18.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    154.526      33.284          0.069         0.000
+            TUM shortest_path      3.945    184.537      27.257          0.248         0.000
+                  TUM mincurv     11.387    145.650      34.914          0.080         0.000
+              TUM mincurv_iqp     43.723    141.486      35.902          0.047         0.000
+raceline shipped with dataset        NaN    156.797      32.313          0.216         0.000
+                    F1-NN raw      0.478    191.205      26.638          0.206         0.068
+               F1-NN smoothed      0.478    156.926      32.457          0.100         0.068
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmpmkqqw5x5.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    118.693      31.103          0.045         0.000
+            TUM shortest_path      1.330    131.270      27.601          0.136         0.000
+                  TUM mincurv      4.437    109.504      33.317          0.033         0.000
+              TUM mincurv_iqp     16.701    106.729      34.156          0.027         0.000
+raceline shipped with dataset        NaN    119.512      30.391          0.057         0.000
+                    F1-NN raw      0.379    146.136      24.996          0.190         0.107
+               F1-NN smoothed      0.379    120.513      30.311          0.133         0.107
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmp3efr3qg6.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    160.479      33.679          0.106         0.000
+            TUM shortest_path      3.652    173.976      30.396          0.334         0.000
+                  TUM mincurv     12.064    152.285      35.259          0.102         0.000
+              TUM mincurv_iqp     64.252    142.492      37.625          0.062         0.000
+raceline shipped with dataset        NaN    167.320      32.017          0.725         0.000
+                    F1-NN raw      0.516    205.395      26.074          0.319         0.182
+               F1-NN smoothed      0.516    165.918      32.265          0.351         0.182
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmpbbt8ipg5.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    129.533      33.226          0.074         0.000
+            TUM shortest_path      2.955    157.693      26.659          0.157         0.000
+                  TUM mincurv      7.412    120.226      35.424          0.050         0.000
+              TUM mincurv_iqp     29.109    113.831      37.303          0.038         0.000
+raceline shipped with dataset        NaN    130.658      32.403          0.155         0.000
+                    F1-NN raw      0.453    164.517      25.882          0.216         0.015
+               F1-NN smoothed      0.453    130.958      32.512          0.122         0.015
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmpes4sjkh0.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    169.430      32.676          0.093         0.000
+            TUM shortest_path      4.681    188.084      28.652          0.309         0.000
+                  TUM mincurv     13.807    160.487      34.080          0.101         0.000
+              TUM mincurv_iqp     55.858    149.654      36.461          0.049         0.000
+raceline shipped with dataset        NaN    174.341      31.206          0.201         0.000
+                    F1-NN raw      0.518    205.458      26.655          0.181         0.020
+               F1-NN smoothed      0.518    168.684      32.470          0.127         0.020
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/raceline_optimization/tum_optimizer/helper_funcs_glob/src/prep_track.py:79: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Shanghai: TUM prep_track failed (At least two spline normals are crossed, check input or increase smoothing factor!); skipped
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmp8xvzt5ok.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    170.041      34.616          0.076         0.000
+            TUM shortest_path      6.573    202.730      28.393          0.197         0.000
+                  TUM mincurv     16.316    157.542      36.980          0.049         0.000
+              TUM mincurv_iqp     61.390    148.335      39.196          0.042         0.000
+raceline shipped with dataset        NaN    173.019      33.525          0.110         0.000
+                    F1-NN raw      0.575    229.243      25.467          0.409         0.290
+               F1-NN smoothed      0.575    184.699      31.599          0.104         0.290
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmp3f696h0e.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    185.602      31.465          0.112         0.000
+            TUM shortest_path      5.730    196.991      29.137          0.274         0.000
+                  TUM mincurv     15.819    172.306      33.715          0.129         0.000
+              TUM mincurv_iqp     58.241    155.043      37.400          0.043         0.000
+raceline shipped with dataset        NaN    189.415      30.569          0.652         0.000
+                    F1-NN raw      0.556    230.352      25.175          0.388         0.058
+               F1-NN smoothed      0.556    184.438      31.443          0.359         0.058
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmpiyeui3o_.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    188.030      37.223          0.126         0.000
+            TUM shortest_path     10.232    217.130      31.863          0.638         0.000
+                  TUM mincurv     25.027    178.239      39.027          0.091         0.000
+              TUM mincurv_iqp    100.084    172.545      40.303          0.059         0.000
+raceline shipped with dataset        NaN    188.459      36.820          0.485         0.000
+                    F1-NN raw      0.605    241.887      28.781          0.456         0.230
+               F1-NN smoothed      0.605    194.419      35.800          0.208         0.230
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmprv5cur5x.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    116.354      37.084          0.107         0.000
+            TUM shortest_path      2.082    134.675      31.637          0.268         0.000
+                  TUM mincurv      6.582    112.651      38.103          0.068         0.000
+              TUM mincurv_iqp     24.407    107.642      39.852          0.065         0.000
+raceline shipped with dataset        NaN    118.866      36.051          0.198         0.000
+                    F1-NN raw      0.413    148.671      28.924          0.311         0.054
+               F1-NN smoothed      0.413    116.462      36.925          0.115         0.054
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmp_5_s3s10.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    164.100      35.358          0.059         0.000
+            TUM shortest_path      7.313    191.840      29.813          0.199         0.000
+                  TUM mincurv     15.949    156.489      36.816          0.077         0.000
+              TUM mincurv_iqp     57.589    149.049      38.658          0.055         0.000
+raceline shipped with dataset        NaN    177.474      32.427          0.689         0.000
+                    F1-NN raw      0.912    209.861      27.466          0.254         0.121
+               F1-NN smoothed      0.912    165.293      34.871          0.109         0.121
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmpc46tvt5k.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    182.751      30.340          0.156         0.000
+            TUM shortest_path      4.005    199.198      27.220          0.438         0.000
+                  TUM mincurv     15.833    170.754      32.222          0.141         0.000
+              TUM mincurv_iqp     82.400    159.792      34.356          0.059         0.000
+raceline shipped with dataset        NaN    195.032      28.063          0.664         0.000
+                    F1-NN raw      0.548    230.221      23.791          0.466         0.083
+               F1-NN smoothed      0.548    184.691      29.657          0.191         0.083
+resampling /var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/tmpvs3lg5e8.csv from 5.00 m to 2.00 m spacing
+                       method  compute_s  laptime_s  v_mean_mps  max_abs_kappa  clipped_frac
+                   centerline        NaN    132.957      32.460          0.093         0.000
+            TUM shortest_path      2.802    157.940      26.721          0.212         0.000
+                  TUM mincurv      6.356    127.785      33.379          0.052         0.000
+              TUM mincurv_iqp     25.115    122.588      34.751          0.041         0.000
+raceline shipped with dataset        NaN    134.795      31.493          0.179         0.000
+                    F1-NN raw      0.443    163.792      26.120          0.197         0.054
+               F1-NN smoothed      0.443    131.438      32.550          0.268         0.054
+
+Mean over all tracks (vs_mincurv_pct = lap time relative to TUM mincurv on the same track)
+                                n  compute_s  laptime_s  vs_mincurv_pct  v_mean_mps
+method                                                                             
+centerline                     23        NaN    146.515           5.778      34.230
+TUM shortest_path              23      3.811    165.811          20.039      29.586
+TUM mincurv                    23     10.495    138.436           0.000      35.894
+TUM mincurv_iqp                23     43.722    131.105          -5.065      37.699
+raceline shipped with dataset  23        NaN    150.549           8.446      33.067
+F1-NN raw                      23      0.494    186.121          35.370      26.423
+F1-NN smoothed                 23      0.494    148.689           7.452      33.380
+
+Mean over tracks the model never saw (vs_mincurv_pct = lap time relative to TUM mincurv on the same track)
+                                n  compute_s  laptime_s  vs_mincurv_pct  v_mean_mps
+method                                                                             
+centerline                     13        NaN    143.119           5.824      33.892
+TUM shortest_path              13      3.308    160.505          19.202      29.407
+TUM mincurv                    13      9.324    135.159           0.000      35.529
+TUM mincurv_iqp                13     38.111    127.482          -5.318      37.390
+raceline shipped with dataset  13        NaN    147.449           8.650      32.688
+F1-NN raw                      13      0.487    181.449          35.979      25.975
+F1-NN smoothed                 13      0.487    144.196           6.895      33.183

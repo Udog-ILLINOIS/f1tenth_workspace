@@ -1,0 +1,29 @@
+{
+  "experiment": "raceline_comparison",
+  "raceline": "autodrive_roboracer_centerline_x0.5",
+  "speed_scaling": 0.5,
+  "timed_laps_requested": 10,
+  "map": "autodrive_roboracer",
+  "controller": "MAP",
+  "lu_table": "SIM_linear",
+  "recorded": "2026-10-04T13:00:01",
+  "raceline_info": "Imported raceline centerline from centerline.csv; estimated lap time: 6.588s; maximum speed: 7.456m/s; ",
+  "simulator": "AutoDRIVE RoboRacer 2026-iros (practice, macOS)",
+  "forzaeth": {
+    "branch": "ros2-humble",
+    "commit": "458132fba2d84cbd65c502fe7a54be47b6b4f31a",
+    "local_patches": [
+      "stack_master/setup.py                                     | 2 +-",
+      " utilities/nodes/sector_tuner/sector_tuner/sector_tuner.py | 8 +++++---",
+      " 2 files changed, 6 insertions(+), 4 deletions(-)"
+    ]
+  },
+  "files": {
+    "global_waypoints.json": "exact waypoints + speed profile driven (before speed scaling)",
+    "speed_scaling.yaml": "ForzaETH sector speed scaling used",
+    "raceline_source.csv": "raceline as generated (TUM traj_race_cl format), if imported"
+  },
+  "track": "autodrive_roboracer",
+  "line": "centerline",
+  "original_run_name": "20261004_175730_centerline_x0.5"
+}

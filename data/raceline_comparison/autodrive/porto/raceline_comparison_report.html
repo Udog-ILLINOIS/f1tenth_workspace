@@ -1,0 +1,119 @@
+<title>RoboRacer Raceline Comparison</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f6f7f8; --surface:#ffffff; --ink:#16202a; --muted:#5b6672; --rule:#d9dee3;
+  --accent:#c2410c; --good:#15803d; --bad:#b91c1c; --hl:#fff4ec;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11161b; --surface:#182028; --ink:#e6ebef; --muted:#9aa6b2; --rule:#2c3640;
+    --accent:#fb923c; --good:#4ade80; --bad:#f87171; --hl:#2a1f17; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11161b; --surface:#182028; --ink:#e6ebef; --muted:#9aa6b2; --rule:#2c3640;
+  --accent:#fb923c; --good:#4ade80; --bad:#f87171; --hl:#2a1f17; color-scheme:dark;
+}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 "IBM Plex Sans",system-ui,-apple-system,sans-serif;padding-inline:16px;padding-block:32px 56px}
+main{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:500 12px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:28px;line-height:1.2;margin:0;font-weight:600;text-wrap:balance}
+h2{font-size:18px;margin:0 0 10px;font-weight:600;text-wrap:balance}
+p{margin:0;max-width:68ch}
+.sub{color:var(--muted)}
+section{display:flex;flex-direction:column;gap:12px}
+ul{margin:0;padding-left:20px;max-width:72ch;display:flex;flex-direction:column;gap:6px}
+.params{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.params div{background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.params dt{font:500 11px/1.3 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.params dd{margin:0;font-weight:500}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+th{font:500 11px/1.3 "IBM Plex Mono",monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
+td.wrap{white-space:normal;min-width:260px}
+code{font:13px "IBM Plex Mono",ui-monospace,monospace}
+.line{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;font-weight:500}
+tr.best td{background:var(--hl)}
+.ok{color:var(--good);font-weight:500}
+.fail{color:var(--bad);font-weight:500}
+.note{font-size:13px;color:var(--muted);max-width:80ch}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+</style>
+
+<main>
+<header>
+  <span class="eyebrow">SigRobotics F1Tenth · 2026-10-04</span>
+  <h1>RoboRacer Raceline Comparison</h1>
+  <p class="sub">8 global racelines, each driven by the ForzaETH race stack for 10 timed laps on the AutoDRIVE RoboRacer practice track.</p>
+</header>
+
+<section>
+  <h2>Setup</h2>
+  <dl class="params">
+    <div><dt>Simulator</dt><dd>AutoDRIVE RoboRacer 2026-iros (practice)</dd></div>
+    <div><dt>Track</dt><dd>autodrive_roboracer, ~28 m loop, 1.06–2.46 m wide</dd></div>
+    <div><dt>Planner / controller</dt><dd>ForzaETH race stack (ros2-humble), MAP controller</dd></div>
+    <div><dt>Speed scaling</dt><dd>0.5× each line’s own speed profile</dd></div>
+    <div><dt>Laps per line</dt><dd>1 standing start + 10 timed flying laps</dd></div>
+    <div><dt>Safety margin</dt><dd>0.25 m from line centre to each wall</dd></div>
+  </dl>
+  <ul>
+    <li><strong>Planner.</strong> ForzaETH in time-trial mode. Its state machine stays in <code>GB_TRACK</code> and feeds the imported global line to the MAP controller (<code>SIM_linear</code> lookup table), which produces every steering and speed command. In time trials there is no online replanning, so each run tests the global line plus ForzaETH’s tracking.</li>
+    <li><strong>Why 0.5× speed.</strong> The speed profiles were computed by the TUM optimizer for a generic F1Tenth car (8 m/s top speed, 10 m/s² lateral grip). That model was never measured against this simulated car. At 0.8×, ForzaETH’s own line crashed on 5 of 5 laps; at 0.5× every line except the raw IL line ran clean. The same 0.5× is used for every line so the comparison is fair. Top driven speed was about 3.7 m/s.</li>
+    <li><strong>Safety margin.</strong> All TUM lines were optimized with <code>width_opt = 0.50 m</code>, which keeps the line centre at least 0.25 m from each wall. With a 0.31 m wide car that leaves about 0.10 m clearance per side. The centerline sits ≥ 0.48 m from the walls and needs none. The IL line came with no margin, so a second version, <span class="line">il_line_margin</span>, was made to match: points were pushed back from the walls before TUM smoothing so the final line has 0.26 m.</li>
+    <li><strong>Timing and crashes.</strong> Lap times use the simulator’s own clock. Statistics cover the 10 flying laps; the standing first lap is excluded. A crash is the simulator’s collision counter firing, or the car stuck for 1.5 s. Each crash resets the car to the start line and that lap is not counted.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Lines</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Line</th><th>How it was made</th><th class="n">Length</th><th class="n">Planned top speed (1.0×)</th><th class="n">Closest wall</th></tr></thead>
+    <tbody>
+      <tr><td class="line">centerline</td><td class="wrap">ForzaETH’s track centerline, with TUM smoothing and TUM speed profile</td><td class="n">30.85 m</td><td class="n">7.46 m/s</td><td class="n">0.48 m</td></tr>
+      <tr><td class="line">min_distance</td><td class="wrap">TUM shortest path</td><td class="n">26.70 m</td><td class="n">5.91 m/s</td><td class="n">0.13 m</td></tr>
+      <tr><td class="line">min_curvature</td><td class="wrap">TUM minimum curvature</td><td class="n">27.41 m</td><td class="n">6.85 m/s</td><td class="n">0.13 m</td></tr>
+      <tr><td class="line">min_time</td><td class="wrap">TUM minimum time, solver started from the centerline</td><td class="n">27.87 m</td><td class="n">7.28 m/s</td><td class="n">0.24 m</td></tr>
+      <tr><td class="line">min_time_from_mincurv</td><td class="wrap">TUM minimum time, solver started from min_curvature</td><td class="n">27.87 m</td><td class="n">7.28 m/s</td><td class="n">0.24 m</td></tr>
+      <tr><td class="line">min_time_from_il</td><td class="wrap">TUM minimum time, solver started from the IL line</td><td class="n">27.87 m</td><td class="n">7.28 m/s</td><td class="n">0.24 m</td></tr>
+      <tr><td class="line">il_line</td><td class="wrap">Imitation-learning (F1-NN) line, with TUM smoothing and speed profile; no margin</td><td class="n">28.67 m</td><td class="n">7.29 m/s</td><td class="n">0.16 m</td></tr>
+      <tr><td class="line">il_line_margin</td><td class="wrap">Same IL line, pushed to the 0.25 m margin before smoothing</td><td class="n">28.75 m</td><td class="n">7.29 m/s</td><td class="n">0.26 m</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Closest wall is the distance from the line’s centre to the nearest wall on ForzaETH’s map. The map is slightly narrower than TUM’s track bounds in places, which is why min_distance and min_curvature read below 0.25 m. The three min_time lines are the same line: the solver reached the same result from every starting guess.</p>
+</section>
+
+<section>
+  <h2>Results</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Line</th><th class="n">Laps</th><th class="n">Mean</th><th class="n">Median</th><th class="n">Min</th><th class="n">Max</th><th class="n">Std</th><th class="n">Crashes</th><th class="n">Closest wall driven</th></tr></thead>
+    <tbody>
+      <tr class="best"><td class="line">min_time</td><td class="n">10 / 10</td><td class="n">12.279 s</td><td class="n">12.283 s</td><td class="n">12.247 s</td><td class="n">12.287 s</td><td class="n">0.011</td><td class="n ok">0</td><td class="n">0.05 m</td></tr>
+      <tr class="best"><td class="line">min_time_from_mincurv</td><td class="n">10 / 10</td><td class="n">12.279 s</td><td class="n">12.283 s</td><td class="n">12.248 s</td><td class="n">12.288 s</td><td class="n">0.011</td><td class="n ok">0</td><td class="n">0.05 m</td></tr>
+      <tr class="best"><td class="line">min_time_from_il</td><td class="n">10 / 10</td><td class="n">12.281 s</td><td class="n">12.283 s</td><td class="n">12.246 s</td><td class="n">12.292 s</td><td class="n">0.012</td><td class="n ok">0</td><td class="n">0.05 m</td></tr>
+      <tr><td class="line">il_line_margin</td><td class="n">10 / 10</td><td class="n">12.479 s</td><td class="n">12.483 s</td><td class="n">12.448 s</td><td class="n">12.485 s</td><td class="n">0.011</td><td class="n ok">0</td><td class="n">0.10 m</td></tr>
+      <tr><td class="line">min_curvature</td><td class="n">10 / 10</td><td class="n">12.488 s</td><td class="n">12.490 s</td><td class="n">12.459 s</td><td class="n">12.499 s</td><td class="n">0.011</td><td class="n ok">0</td><td class="n">0.05 m</td></tr>
+      <tr><td class="line">centerline</td><td class="n">10 / 10</td><td class="n">12.944 s</td><td class="n">12.957 s</td><td class="n">12.873 s</td><td class="n">12.978 s</td><td class="n">0.030</td><td class="n ok">0</td><td class="n">0.29 m</td></tr>
+      <tr><td class="line">min_distance</td><td class="n">10 / 10</td><td class="n">15.248 s</td><td class="n">15.240 s</td><td class="n">15.208 s</td><td class="n">15.308 s</td><td class="n">0.031</td><td class="n ok">0</td><td class="n">0.06 m</td></tr>
+      <tr><td class="line">il_line</td><td class="n">0 / 10</td><td class="n">–</td><td class="n">–</td><td class="n">–</td><td class="n">–</td><td class="n">–</td><td class="n fail">10</td><td class="n">0.00 m</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>Min time is fastest:</strong> 12.28 s mean, 0.21 s per lap ahead of min_curvature. The starting guess (centerline, min curvature or IL line) made no difference.</li>
+    <li><strong>The IL line with margin</strong> is 0.20 s slower than min time, about level with min_curvature, and keeps the most room to the wall of the fast lines (0.10 m driven).</li>
+    <li><strong>The raw IL line</strong> crashed on all 10 attempts at the same spot, the S-bend near (−1.26, −2.15), about 6.1 s into the lap at 2.8 m/s. It passes 0.16 m from the wall, which leaves under 1 cm for the car’s edge.</li>
+    <li><strong>Shortest is slowest:</strong> min_distance is 1.1 m shorter than min_curvature but 2.8 s slower, because its tighter corners force a much lower speed profile.</li>
+    <li><strong>Centerline</strong> is the safest (0.29 m from the wall) and 0.67 s slower than min time.</li>
+  </ul>
+</section>
+
+<footer>
+  Data: <code>F1Tenth/data/raceline_comparison/</code>, one folder per run (<code>laps.csv</code>, <code>events.csv</code>, 20 Hz <code>telemetry.csv</code>, <code>summary.json</code> and a snapshot of the exact waypoints and speed scaling). Lines: <code>F1Tenth/racelines/autodrive_roboracer/</code>.
+</footer>
+</main>

@@ -1,0 +1,18 @@
+# Humble stack = Humble sim (f1tenth_gym_ros on branch `dev-humble`) + the lab packages, in ONE
+# container. Separate image tag and (via ./sim.sh) separate compose project, so it can't clash
+# with Foxy. Mirrors foxy_labs.compose.yml's mount list (Foxy's own file is untouched, so
+# switching which stack has the labs mounted never touches its config).
+# Relative paths resolve against the first -f file's directory (gym_ros_workspace/f1tenth_gym_ros/), so ../labs is gym_ros_workspace/labs.
+# No noVNC/RViz here: visualization is Foxglove (ws://localhost:8765), see config/foxglove/.
+services:
+  sim:
+    image: f1tenth_gym_ros:humble
+    volumes:
+      - ../labs/lab1_ros_basics/lab1_ws/src/lab1_pkg:/sim_ws/src/lab1_pkg
+      - ../labs/lab2_emergency_braking/safety_node:/sim_ws/src/safety_node
+      - ../labs/lab3_pid_control/wall_follow:/sim_ws/src/wall_follow
+      - ../labs/lab4_follow_gap/gap_follow:/sim_ws/src/gap_follow
+      - ../labs/lab5_pure_pursuit/pure_pursuit:/sim_ws/src/pure_pursuit
+      - ../labs/lab6_motion_planning/lab7_pkg:/sim_ws/src/lab7_pkg
+      - ../labs/lab8_mpc/mpc:/sim_ws/src/mpc
+      - ../races:/sim_ws/race

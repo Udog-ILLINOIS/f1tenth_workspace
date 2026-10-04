@@ -1,0 +1,81 @@
+{
+  "raceline": "autodrive_f1tenth_forza_iqp_x0.3",
+  "laps_completed": 5,
+  "valid_laps": 5,
+  "crashes": 1,
+  "best_lap_s": 16.97,
+  "mean_lap_s": 17.026,
+  "std_lap_s": 0.039,
+  "max_speed_mps": 2.712,
+  "mean_speed_mps": 1.612,
+  "min_wall_dist_m": 0.132,
+  "laps": [
+    {
+      "lap": 1,
+      "lap_time_s": 16.97,
+      "valid": 1,
+      "crashes": 0,
+      "max_speed_mps": 2.676,
+      "mean_speed_mps": 1.615,
+      "min_wall_dist_m": 0.133,
+      "distance_m": 27.87
+    },
+    {
+      "lap": 2,
+      "lap_time_s": 16.996,
+      "valid": 1,
+      "crashes": 0,
+      "max_speed_mps": 2.68,
+      "mean_speed_mps": 1.613,
+      "min_wall_dist_m": 0.135,
+      "distance_m": 27.81
+    },
+    {
+      "lap": 3,
+      "lap_time_s": 17.071,
+      "valid": 1,
+      "crashes": 0,
+      "max_speed_mps": 2.681,
+      "mean_speed_mps": 1.614,
+      "min_wall_dist_m": 0.134,
+      "distance_m": 27.89
+    },
+    {
+      "lap": 4,
+      "lap_time_s": 17.028,
+      "valid": 1,
+      "crashes": 0,
+      "max_speed_mps": 2.712,
+      "mean_speed_mps": 1.609,
+      "min_wall_dist_m": 0.132,
+      "distance_m": 27.84
+    },
+    {
+      "lap": 5,
+      "lap_time_s": 17.065,
+      "valid": 1,
+      "crashes": 0,
+      "max_speed_mps": 2.659,
+      "mean_speed_mps": 1.608,
+      "min_wall_dist_m": 0.134,
+      "distance_m": 27.89
+    }
+  ],
+  "crash_events": [
+    {
+      "t_s": 0.03,
+      "lap": 0.0,
+      "type": "contact",
+      "x": 0.9,
+      "y": -2.85,
+      "speed_mps": 0.0,
+      "min_wall_dist_m": 0.0
+    }
+  ],
+  "note": "rebuilt from laps.csv/events.csv (original summary truncated by shutdown)",
+  "track": "autodrive_f1tenth",
+  "line": "forza_iqp",
+  "speed_scaling": 0.3,
+  "original_run_name": "20261004_165714_forza_iqp_30pct",
+  "original_label": "forza_iqp_30pct"
+}

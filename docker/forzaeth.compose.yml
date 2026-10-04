@@ -1,0 +1,37 @@
+# ForzaETH race stack + AutoDRIVE, one container. Driven by ../forzaeth.sh.
+# AutoDRIVE (native macOS app) connects to the bridge on localhost:4567.
+# Foxglove is published on 8766 so it can run alongside the Humble sim's 8765.
+# Relative paths resolve against this file's directory (docker/).
+services:
+  forzaeth:
+    build:
+      context: .
+      dockerfile: forzaeth_autodrive.Dockerfile
+      args:
+        USER: ${USER}
+    image: race_stack:humble_autodrive
+    container_name: forzaeth_autodrive
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    shm_size: "1gb"
+    ports:
+      - "4567:4567"
+      - "8766:8765"
+    volumes:
+      # Container-side paths are fixed: the colcon install symlinks point at them.
+      - ../planners/forzaeth/race_stack:/home/${USER}/ws/src/race_stack:rw
+      - ../planners/forzaeth/autodrive_forzaeth:/home/${USER}/ws/src/autodrive_forzaeth:rw
+      - ../planners/forzaeth/build_cache/humble/build:/home/${USER}/ws/build:rw
+      - ../planners/forzaeth/build_cache/humble/install:/home/${USER}/ws/install:rw
+      - ../planners/forzaeth/build_cache/humble/log:/home/${USER}/ws/log:rw
+      - ../racelines:/home/${USER}/ws/racelines:rw
+      - ../data:/home/${USER}/ws/runs:rw
+    environment:
+      - USER=${USER}
+      - USERNAME=${USER}
+      - ROS_DOMAIN_ID=48
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      - RACECAR_VERSION=SIM
+      - MPLBACKEND=Agg
+      - RCUTILS_COLORIZED_OUTPUT=1

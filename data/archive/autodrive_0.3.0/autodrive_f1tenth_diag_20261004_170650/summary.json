@@ -1,0 +1,77 @@
+{
+  "raceline": "autodrive_f1tenth_diag",
+  "laps_completed": 2,
+  "valid_laps": 1,
+  "crashes": 4,
+  "best_lap_s": 11.269,
+  "mean_lap_s": 11.269,
+  "std_lap_s": null,
+  "max_speed_mps": 4.749,
+  "mean_speed_mps": 2.449,
+  "min_wall_dist_m": 0.016,
+  "laps": [
+    {
+      "lap": 1,
+      "lap_time_s": 11.246,
+      "valid": 0,
+      "crashes": 1,
+      "max_speed_mps": 4.08,
+      "mean_speed_mps": 2.461,
+      "min_wall_dist_m": 0.016,
+      "distance_m": 27.76
+    },
+    {
+      "lap": 2,
+      "lap_time_s": 11.269,
+      "valid": 1,
+      "crashes": 0,
+      "max_speed_mps": 4.749,
+      "mean_speed_mps": 2.436,
+      "min_wall_dist_m": 0.123,
+      "distance_m": 27.57
+    }
+  ],
+  "crash_events": [
+    {
+      "t_s": 0.04,
+      "lap": 0,
+      "type": "contact",
+      "x": 0.49,
+      "y": 0.06,
+      "speed_mps": 0.0,
+      "min_wall_dist_m": 0.0
+    },
+    {
+      "t_s": 18.14,
+      "lap": 0,
+      "type": "contact",
+      "x": 0.88,
+      "y": -2.27,
+      "speed_mps": 3.45,
+      "min_wall_dist_m": 0.0
+    },
+    {
+      "t_s": 25.64,
+      "lap": 0,
+      "type": "contact",
+      "x": 0.93,
+      "y": -3.0,
+      "speed_mps": 2.13,
+      "min_wall_dist_m": 0.0
+    },
+    {
+      "t_s": 39.74,
+      "lap": 1,
+      "type": "contact",
+      "x": 1.08,
+      "y": -1.44,
+      "speed_mps": 3.8,
+      "min_wall_dist_m": 0.02
+    }
+  ],
+  "track": "autodrive_f1tenth",
+  "line": "diag",
+  "speed_scaling": null,
+  "original_run_name": "20261004_170650_diag",
+  "original_label": "diag"
+}

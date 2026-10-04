@@ -1,0 +1,132 @@
+{
+  "raceline": "autodrive_roboracer_forza_iqp_x0.8",
+  "laps_completed": 0,
+  "valid_laps": 0,
+  "crashes": 5,
+  "best_lap_s": null,
+  "best_lap_is_flying": false,
+  "mean_lap_s": null,
+  "std_lap_s": null,
+  "max_speed_mps": 6.865,
+  "mean_speed_mps": null,
+  "min_wall_dist_m": null,
+  "laps": [
+    {
+      "lap": 1,
+      "lap_time_s": 13.541,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 5.723,
+      "mean_speed_mps": 1.657,
+      "min_wall_dist_m": 0.019,
+      "distance_m": 22.23,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 2,
+      "lap_time_s": 2.297,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 6.865,
+      "mean_speed_mps": 4.692,
+      "min_wall_dist_m": 0.0,
+      "distance_m": 11.68,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 3,
+      "lap_time_s": 2.313,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 6.828,
+      "mean_speed_mps": 4.687,
+      "min_wall_dist_m": 0.0,
+      "distance_m": 10.78,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 4,
+      "lap_time_s": 2.248,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 6.858,
+      "mean_speed_mps": 4.738,
+      "min_wall_dist_m": 0.0,
+      "distance_m": 11.3,
+      "sim_lap_time_s": null
+    },
+    {
+      "lap": 5,
+      "lap_time_s": 2.357,
+      "valid": 0,
+      "start": "aborted",
+      "crashes": 1,
+      "max_speed_mps": 6.849,
+      "mean_speed_mps": 4.672,
+      "min_wall_dist_m": 0.005,
+      "distance_m": 11.34,
+      "sim_lap_time_s": null
+    }
+  ],
+  "crash_events": [
+    {
+      "t_s": 19.88,
+      "lap": 1,
+      "type": "collision",
+      "x": 1.19,
+      "y": 4.22,
+      "speed_mps": 3.67,
+      "min_wall_dist_m": 0.0,
+      "reset": 1
+    },
+    {
+      "t_s": 23.19,
+      "lap": 2,
+      "type": "collision",
+      "x": -2.53,
+      "y": -6.77,
+      "speed_mps": 3.15,
+      "min_wall_dist_m": 0.0,
+      "reset": 1
+    },
+    {
+      "t_s": 26.51,
+      "lap": 3,
+      "type": "collision",
+      "x": -3.26,
+      "y": -6.18,
+      "speed_mps": 3.16,
+      "min_wall_dist_m": 0.0,
+      "reset": 1
+    },
+    {
+      "t_s": 29.79,
+      "lap": 4,
+      "type": "collision",
+      "x": -2.53,
+      "y": -6.77,
+      "speed_mps": 3.11,
+      "min_wall_dist_m": 0.0,
+      "reset": 1
+    },
+    {
+      "t_s": 33.15,
+      "lap": 5,
+      "type": "collision",
+      "x": -3.02,
+      "y": -5.77,
+      "speed_mps": 3.19,
+      "min_wall_dist_m": 0.005,
+      "reset": 1
+    }
+  ],
+  "track": "autodrive_roboracer",
+  "line": "forza_iqp",
+  "speed_scaling": 0.8,
+  "original_run_name": "20261004_172655_forza_iqp_x0.8",
+  "original_label": "forza_iqp_x0.8"
+}

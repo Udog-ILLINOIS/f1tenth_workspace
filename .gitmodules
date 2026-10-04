@@ -1,0 +1,32 @@
+[submodule "autodrive/roboracer_sim"]
+	path = autodrive/roboracer_sim
+	url = https://github.com/Udog-ILLINOIS/AutoDRIVE-RoboRacer-Sim-Racing.git
+	branch = main
+[submodule "planners/forzaeth/race_stack"]
+	path = planners/forzaeth/race_stack
+	url = https://github.com/Udog-ILLINOIS/ForzaETH.git
+	branch = ros2-humble
+[submodule "gym_ros_workspace/f1tenth_gym_ros"]
+	path = gym_ros_workspace/f1tenth_gym_ros
+	url = https://github.com/Udog-ILLINOIS/f1tenth_gym_ros.git
+	branch = dev-humble
+[submodule "raceline_optimization/tum_optimizer"]
+	path = raceline_optimization/tum_optimizer
+	url = https://github.com/Udog-ILLINOIS/global_racetrajectory_optimization.git
+	branch = master
+[submodule "raceline_optimization/f1nn_init_shehadeh2026"]
+	path = raceline_optimization/f1nn_init_shehadeh2026
+	url = https://github.com/Udog-ILLINOIS/f1-data-init-optimization.git
+	branch = main
+[submodule "raceline_optimization/track_data/full_scale_tracks"]
+	path = raceline_optimization/track_data/full_scale_tracks
+	url = https://github.com/Udog-ILLINOIS/racetrack-database.git
+	branch = master
+[submodule "raceline_optimization/track_data/f1tenth_scale_tracks"]
+	path = raceline_optimization/track_data/f1tenth_scale_tracks
+	url = https://github.com/Udog-ILLINOIS/f1tenth_racetracks.git
+	branch = main
+[submodule "raceline_optimization/track_data/occupancy_maps"]
+	path = raceline_optimization/track_data/occupancy_maps
+	url = https://github.com/Udog-ILLINOIS/f1tenth_maps.git
+	branch = master

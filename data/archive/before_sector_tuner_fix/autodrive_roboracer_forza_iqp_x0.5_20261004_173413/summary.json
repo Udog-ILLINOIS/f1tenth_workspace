@@ -1,0 +1,69 @@
+{
+  "raceline": "autodrive_roboracer_forza_iqp_x0.5",
+  "laps_completed": 4,
+  "valid_laps": 4,
+  "crashes": 0,
+  "best_lap_s": 10.046,
+  "best_lap_is_flying": true,
+  "mean_lap_s": 10.084,
+  "std_lap_s": 0.027,
+  "max_speed_mps": 4.441,
+  "mean_speed_mps": 2.428,
+  "min_wall_dist_m": 0.144,
+  "laps": [
+    {
+      "lap": 1,
+      "lap_time_s": 19.352,
+      "valid": 1,
+      "start": "standing",
+      "crashes": 0,
+      "max_speed_mps": 4.441,
+      "mean_speed_mps": 1.499,
+      "min_wall_dist_m": 0.146,
+      "distance_m": 27.67,
+      "sim_lap_time_s": 33.080501556396484
+    },
+    {
+      "lap": 2,
+      "lap_time_s": 10.046,
+      "valid": 1,
+      "start": "flying",
+      "crashes": 0,
+      "max_speed_mps": 4.39,
+      "mean_speed_mps": 2.749,
+      "min_wall_dist_m": 0.145,
+      "distance_m": 27.61,
+      "sim_lap_time_s": 10.055399894714355
+    },
+    {
+      "lap": 3,
+      "lap_time_s": 10.1,
+      "valid": 1,
+      "start": "flying",
+      "crashes": 0,
+      "max_speed_mps": 4.36,
+      "mean_speed_mps": 2.737,
+      "min_wall_dist_m": 0.144,
+      "distance_m": 27.67,
+      "sim_lap_time_s": 10.095499992370605
+    },
+    {
+      "lap": 4,
+      "lap_time_s": 10.106,
+      "valid": 1,
+      "start": "flying",
+      "crashes": 0,
+      "max_speed_mps": 4.357,
+      "mean_speed_mps": 2.728,
+      "min_wall_dist_m": 0.145,
+      "distance_m": 27.68,
+      "sim_lap_time_s": 10.10949993133545
+    }
+  ],
+  "crash_events": [],
+  "track": "autodrive_roboracer",
+  "line": "forza_iqp",
+  "speed_scaling": 0.5,
+  "original_run_name": "20261004_173413_forza_iqp_x0.5",
+  "original_label": "forza_iqp_x0.5"
+}

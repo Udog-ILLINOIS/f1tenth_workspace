@@ -1,0 +1,19 @@
+# Foxy stack = Foxy sim (f1tenth_gym_ros on branch `main`) + the lab packages, in ONE container.
+# Kept outside every git repo so switching the sim's branch never touches it. Use via ./sim.sh foxy ...
+#
+# - image is pinned to a Foxy-only tag so building a Humble image can never overwrite it.
+# - labs are mounted from their own folders; only this (Foxy) stack mounts them.
+# - To add a lab: add one line below, then `colcon build --packages-select <pkg>` in the container.
+# Relative paths resolve against the first -f file's directory (gym_ros_workspace/f1tenth_gym_ros/), so ../labs is gym_ros_workspace/labs.
+services:
+  sim:
+    image: f1tenth_gym_ros:foxy
+    volumes:
+      - ../labs/lab1_ros_basics/lab1_ws/src/lab1_pkg:/sim_ws/src/lab1_pkg
+      - ../labs/lab2_emergency_braking/safety_node:/sim_ws/src/safety_node
+      - ../labs/lab3_pid_control/wall_follow:/sim_ws/src/wall_follow
+      - ../labs/lab4_follow_gap/gap_follow:/sim_ws/src/gap_follow
+      - ../labs/lab5_pure_pursuit/pure_pursuit:/sim_ws/src/pure_pursuit
+      - ../labs/lab6_motion_planning/lab7_pkg:/sim_ws/src/lab7_pkg
+      - ../labs/lab8_mpc/mpc:/sim_ws/src/mpc
+      - ../races:/sim_ws/race

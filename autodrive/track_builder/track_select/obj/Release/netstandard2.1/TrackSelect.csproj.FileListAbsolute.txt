@@ -1,0 +1,13 @@
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/autodrive/track_builder/track_select/obj/Release/netstandard2.1/TrackSelect.csproj.AssemblyReference.cache
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/autodrive/track_builder/track_select/obj/Release/netstandard2.1/TrackSelect.GeneratedMSBuildEditorConfig.editorconfig
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/autodrive/track_builder/track_select/obj/Release/netstandard2.1/TrackSelect.AssemblyInfoInputs.cache
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/autodrive/track_builder/track_select/obj/Release/netstandard2.1/TrackSelect.AssemblyInfo.cs
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/autodrive/track_builder/track_select/obj/Release/netstandard2.1/TrackSelect.csproj.CoreCompileInputs.cache
+/private/tmp/claude-501/-Users-emcphilliamy-Desktop-University-of-Illinois-SigRobotics-F1Tenth/4f30d964-944b-4fae-bcc2-fb7e37c6cb53/scratchpad/ts_out/TrackSelect.deps.json
+/private/tmp/claude-501/-Users-emcphilliamy-Desktop-University-of-Illinois-SigRobotics-F1Tenth/4f30d964-944b-4fae-bcc2-fb7e37c6cb53/scratchpad/ts_out/TrackSelect.dll
+/private/tmp/claude-501/-Users-emcphilliamy-Desktop-University-of-Illinois-SigRobotics-F1Tenth/4f30d964-944b-4fae-bcc2-fb7e37c6cb53/scratchpad/ts_out/TrackSelect.pdb
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/autodrive/track_builder/track_select/obj/Release/netstandard2.1/TrackSelect.dll
+/Users/emcphilliamy/Desktop/University_of_Illinois/SigRobotics/F1Tenth/autodrive/track_builder/track_select/obj/Release/netstandard2.1/TrackSelect.pdb
+/var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/autodrive_track_ycblp4e4/dll/TrackSelect.deps.json
+/var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/autodrive_track_ycblp4e4/dll/TrackSelect.dll
+/var/folders/gr/0dcf81wd0713mbzrq9j8ftsr0000gn/T/autodrive_track_ycblp4e4/dll/TrackSelect.pdb
