@@ -22,7 +22,7 @@ F1Tenth/
       build_cache/humble/   colcon build/install/log, mounted into the container
   racelines/<track>/        driven raceline library: <track>_<line>.json/.csv, <track>_track.csv, ACTIVE
   data/                     logged runs: <experiment>/<track>_<line>_x<speed>_<YYYYmmdd_HHMMSS>/, archive/
-  autodrive/                AutoDRIVE apps (local), roboracer_sim/ fork submodule, track_builder/ (see docs/autodrive.md)
+  autodrive/                multi-track sim app (local, ./autodrive.sh fetch), devkit/ + track_builder/ submodules (see docs/autodrive.md)
   raceline_optimization/    every global raceline generator + track data (see its README.md)
 ```
 
@@ -39,7 +39,8 @@ git add <path> && git commit           # record the new pointer here
 
 | Path | Fork (branch) |
 |---|---|
-| `autodrive/roboracer_sim` | `AutoDRIVE-RoboRacer-Sim-Racing` (`main`) |
+| `autodrive/track_builder` | `AutoDRIVE` (`f1tenth_multitrack`): TrackSelect plugin + custom tracks; built app is a release |
+| `autodrive/devkit` | `AutoDRIVE` (`AutoDRIVE-Devkit`, shallow) |
 | `planners/forzaeth/race_stack` | `ForzaETH` (`ros2-humble`) |
 | `gym_ros_workspace/f1tenth_gym_ros` | `f1tenth_gym_ros` (`dev-humble`) |
 | `raceline_optimization/tum_optimizer` | `global_racetrajectory_optimization` (`master`) |
@@ -47,7 +48,7 @@ git add <path> && git commit           # record the new pointer here
 | `raceline_optimization/track_data/*` | `racetrack-database`, `f1tenth_racetracks`, `f1tenth_maps` |
 
 Not in git (see `.gitignore`): Python venvs, `planners/forzaeth/build_cache/`, the AutoDRIVE macOS apps
-(`autodrive/simulator*/`, download release `2026-iros`, see `docs/autodrive.md`), `docs/F1Tenth_Papers/`,
+(`autodrive/simulator_multitrack/`, get it with `./autodrive.sh fetch`), `docs/F1Tenth_Papers/`,
 and `gym_ros_workspace/labs/` (course labs stay local, so the lab links below only work on a local copy).
 
 **ForzaETH on AutoDRIVE** (separate container, separate from the stacks below): see

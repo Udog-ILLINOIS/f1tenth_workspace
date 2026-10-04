@@ -28,7 +28,7 @@ Everything ROS runs in one container, `forzaeth_autodrive`. AutoDRIVE runs nativ
 | Path | What |
 |---|---|
 | `forzaeth.sh` | the only entry point you need (`./forzaeth.sh` alone prints usage) |
-| `autodrive.sh`, `autodrive/` | the simulator app (`autodrive/simulator/`) and its devkit (`autodrive/roboracer_sim/autodrive_devkit/`, a submodule of our AutoDRIVE fork, reference only) |
+| `autodrive.sh`, `autodrive/` | the multi-track simulator app (`autodrive/simulator_multitrack/`, `./autodrive.sh fetch`), its source (`autodrive/track_builder/`) and the devkit (`autodrive/devkit/`, reference only), both submodules of our AutoDRIVE fork |
 | `planners/forzaeth/race_stack/` | upstream clone, `ros2-humble`, two local patches (below); container `~/ws/src/race_stack` |
 | `planners/forzaeth/autodrive_forzaeth/` | our package: bridge, adapter, mapper, run logger, raceline and analysis scripts; container `~/ws/src/autodrive_forzaeth` |
 | `planners/forzaeth/build_cache/humble/` | colcon build/install/log (mounted at `~/ws/{build,install,log}`) |

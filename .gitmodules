@@ -1,7 +1,3 @@
-[submodule "autodrive/roboracer_sim"]
-	path = autodrive/roboracer_sim
-	url = https://github.com/Udog-ILLINOIS/AutoDRIVE-RoboRacer-Sim-Racing.git
-	branch = main
 [submodule "planners/forzaeth/race_stack"]
 	path = planners/forzaeth/race_stack
 	url = https://github.com/Udog-ILLINOIS/ForzaETH.git
@@ -30,3 +26,12 @@
 	path = raceline_optimization/track_data/occupancy_maps
 	url = https://github.com/Udog-ILLINOIS/f1tenth_maps.git
 	branch = master
+[submodule "autodrive/track_builder"]
+	path = autodrive/track_builder
+	url = https://github.com/Udog-ILLINOIS/AutoDRIVE.git
+	branch = f1tenth_multitrack
+[submodule "autodrive/devkit"]
+	path = autodrive/devkit
+	url = https://github.com/Udog-ILLINOIS/AutoDRIVE.git
+	branch = AutoDRIVE-Devkit
+	shallow = true

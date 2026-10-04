@@ -3,17 +3,21 @@
 AutoDRIVE **RoboRacer** simulator, release
 [`2026-iros`](https://github.com/AutoDRIVE-Ecosystem/AutoDRIVE-RoboRacer-Sim-Racing/releases/tag/2026-iros),
 macOS **practice** build, installed 2026-10-04. It replaced Simulator 0.3.0 (2023), which was
-deleted.
+deleted. We run our multi-track copy of it: the stock app plus the `TrackSelect` plugin, which adds a
+`-track <name>` launch argument (the stock copy was deleted after the multi-track build).
 
 ```
 autodrive/
-  simulator/AutoDRIVE Simulator.app   universal binary (native arm64)
-  simulator/README.md                 upstream macOS notes (chmod / quarantine)
-  devkit/                             upstream ROS 2 devkit, package autodrive_roboracer (reference only)
-autodrive.sh                          launcher (repo root)
+  simulator_multitrack/AutoDRIVE Simulator.app   local only: ./autodrive.sh fetch downloads it from
+                                                 github.com/Udog-ILLINOIS/AutoDRIVE/releases (f1tenth_multitrack_v1)
+  track_builder/   submodule, Udog-ILLINOIS/AutoDRIVE branch f1tenth_multitrack: plugin source,
+                   custom tracks, build_track.py (rebuilding needs the stock 2026-iros app, see its README)
+  devkit/          submodule, Udog-ILLINOIS/AutoDRIVE branch AutoDRIVE-Devkit (reference only)
+autodrive.sh       launcher (repo root)
 ```
 
 ```bash
+./autodrive.sh fetch        # once, after cloning
 ./autodrive.sh sim          # 1280x720 window, "Very Low" quality
 ./autodrive.sh sim --full   # the app's own resolution and quality
 ```
@@ -31,6 +35,7 @@ commands on `.../throttle_command` and `.../steering_command`, and `/autodrive/r
 (Bool) to put the car back on its spawn.
 
 Practice, explore and compete builds exist for macOS, Linux and Windows. Explore and compete
-weren't downloaded. Simulator and devkit come from the same release; upgrade them together.
+weren't downloaded. The devkit's `autodrive_roboracer` package ships in the release zip; the
+`AutoDRIVE-Devkit` branch has the F1TENTH-named equivalent (`ADSS Toolkit/autodrive_ros2/autodrive_f1tenth`).
 If macOS refuses to open the app: `chmod -R +x "AutoDRIVE Simulator.app/Contents/MacOS"` and
 `xattr -cr "AutoDRIVE Simulator.app"` (already done for this install).

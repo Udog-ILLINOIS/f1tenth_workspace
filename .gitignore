@@ -12,7 +12,7 @@ planners/forzaeth/build_cache/
 *_backup_*.patch
 
 # Downloaded AutoDRIVE macOS apps (release 2026-iros; files exceed GitHub's 100 MB limit)
-autodrive/simulator/
+autodrive/simulator_stock/
 autodrive/simulator_multitrack/
 
 # Third-party papers (link them instead)
