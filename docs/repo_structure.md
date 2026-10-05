@@ -3,7 +3,9 @@
 How the F1Tenth folder maps onto git and GitHub. **Keep this diagram current.** The
 `.githooks/check_repo_structure.sh` hook runs on every commit and push. It blocks the commit or push
 when a tracked folder (depth 1-2) or a submodule (path, fork, branch) isn't named in this file.
-Turn the hook on once per clone: `git config core.hooksPath .githooks`.
+Turn the hook on once per clone: `git config core.hooksPath .githooks`. Claude Code also gets a
+reminder from `.claude/settings.json`: before it commits or pushes, and after it pulls, checks out,
+switches, merges, rebases or changes submodules.
 
 ```
 LOCAL  ~/…/SigRobotics/F1Tenth                          GITHUB (Udog-ILLINOIS)                     UPSTREAM (forked from)
@@ -11,7 +13,8 @@ LOCAL  ~/…/SigRobotics/F1Tenth                          GITHUB (Udog-ILLINOIS)
 F1Tenth/  ─────────────────────────── git repo ───────► f1tenth_workspace  (main)                  (standalone, not a fork)
 │
 ├── README.md  .gitignore  .gitmodules        ┐
-├── .githooks/                                │
+├── .githooks/   (git: structure check)       │
+├── .claude/hooks/ + settings.json (Claude)   │
 ├── sim.sh  autodrive.sh  forzaeth.sh         │
 ├── docker/                                   │  your files, committed
 ├── docs/*.md                                 │  directly in f1tenth
@@ -26,6 +29,7 @@ F1Tenth/  ───────────────────────�
 │
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► f1tenth  (main)  club stack, PRs ───► SIGRobotics-UIUC/f1tenth
+│   │   ├── branches: main (= SIGRobotics main), SimReadyBranch (local/global planner work)
 │   │   └── ws/src/f1tenth_system/   (the club repo's own submodule ──► f1tenth/f1tenth_system)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
