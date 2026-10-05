@@ -12,7 +12,7 @@ case "$event" in
   PostToolUse) verbs='pull|checkout|switch|merge|rebase|submodule|clone' ;;
   *) exit 0 ;;
 esac
-verb="$(grep -oE "\bgit\b([[:space:]]+-[^[:space:]]+([[:space:]]+[^-[:space:]][^[:space:]]*)?)*[[:space:]]+($verbs)\b" <<<"$cmd" | grep -oE "($verbs)\$" | head -1)"
+verb="$(grep -oE "(^|[;&|(]|&&|\|\|)[[:space:]]*git([[:space:]]+-[^[:space:]]+([[:space:]]+[^-[:space:]][^[:space:]]*)?)*[[:space:]]+($verbs)\b" <<<"$cmd" | grep -oE "($verbs)\$" | head -1)"
 [ -n "$verb" ] || exit 0
 
 root="${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel 2>/dev/null)}"
