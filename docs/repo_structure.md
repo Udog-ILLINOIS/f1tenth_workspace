@@ -28,9 +28,9 @@ F1Tenth/  ───────────────────────�
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
 │
 ├── planners/
-│   ├── sigrobotics/    ═══ submodule ═══════════════════► f1tenth  (main)  club stack, PRs ───► SIGRobotics-UIUC/f1tenth
-│   │   ├── branches: main (= SIGRobotics main), SimReadyBranch (local/global planner work)
-│   │   └── ws/src/f1tenth_system/   (the club repo's own submodule ──► f1tenth/f1tenth_system)
+│   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
+│   │   ├── Dockerfile, docker-compose.yml, ws/src/autodrive_bridge/   (setup + sim bridge; planning etc. empty)
+│   │   └── remote f1tenth_old ──► Udog-ILLINOIS/f1tenth  (old club repo, dropped; keeps SimReadyBranch)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
@@ -55,8 +55,9 @@ Legend:  ═══ submodule = f1tenth_workspace stores only a commit pointer to
 
 ## How changes flow
 
-`planners/sigrobotics` is the club stack. Only stack work goes there: branch in
-`Udog-ILLINOIS/f1tenth`, push, then open a PR to `SIGRobotics-UIUC/f1tenth` (`gh pr create -R SIGRobotics-UIUC/f1tenth`).
+`planners/sigrobotics` is the club stack. Only stack work goes there: commit to `main` in
+`Udog-ILLINOIS/roboracer`, push, then open a PR to `SIGRobotics-UIUC/roboracer`
+(`gh pr create -R SIGRobotics-UIUC/roboracer --head Udog-ILLINOIS:main`).
 Everything else (sims, ForzaETH, raceline tools, data) lives in `f1tenth_workspace`.
 
 ```
