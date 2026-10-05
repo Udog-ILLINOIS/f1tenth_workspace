@@ -16,6 +16,7 @@ F1Tenth/
     f1tenth_gym_ros/        simulator repo (branch picks Foxy vs Humble)
     labs/                   lab<N>_<topic>, each its own git repo, mounted into the sim container
   planners/
+    sigrobotics/            club stack (Udog-ILLINOIS/f1tenth fork of SIGRobotics-UIUC/f1tenth), PRs go upstream
     forzaeth/               ForzaETH on AutoDRIVE (see docs/forzaeth_autodrive.md)
       race_stack/           ForzaETH race_stack clone, ros2-humble (maps in stack_master/maps/)
       autodrive_forzaeth/   our ROS 2 package: AutoDRIVE bridge/adapter, mapper, run logger, scripts
@@ -34,7 +35,7 @@ Third-party code lives in our forks under `Udog-ILLINOIS`, linked here as git su
 commit or push when a folder or submodule isn't in it.
 
 ```bash
-git clone --recurse-submodules https://github.com/Udog-ILLINOIS/f1tenth.git F1Tenth
+git clone --recurse-submodules https://github.com/Udog-ILLINOIS/f1tenth_workspace.git F1Tenth
 git config core.hooksPath .githooks    # turn on the repo-structure check (commit + push)
 git submodule update --remote          # pull the latest commit of each fork's tracked branch
 git add <path> && git commit           # record the new pointer here
@@ -44,6 +45,7 @@ git add <path> && git commit           # record the new pointer here
 |---|---|
 | `autodrive/track_builder` | `AutoDRIVE` (`f1tenth_multitrack`): TrackSelect plugin + custom tracks; built app is a release |
 | `autodrive/devkit` | `AutoDRIVE` (`AutoDRIVE-Devkit`, shallow) |
+| `planners/sigrobotics` | `f1tenth` (`main`): the club stack, PRs go to `SIGRobotics-UIUC/f1tenth` |
 | `planners/forzaeth/race_stack` | `ForzaETH` (`ros2-humble`) |
 | `gym_ros_workspace/f1tenth_gym_ros` | `f1tenth_gym_ros` (`dev-humble`) |
 | `raceline_optimization/tum_optimizer` | `global_racetrajectory_optimization` (`master`) |

@@ -35,3 +35,7 @@
 	url = https://github.com/Udog-ILLINOIS/AutoDRIVE.git
 	branch = AutoDRIVE-Devkit
 	shallow = true
+[submodule "planners/sigrobotics"]
+	path = planners/sigrobotics
+	url = https://github.com/Udog-ILLINOIS/f1tenth.git
+	branch = main

@@ -8,7 +8,7 @@ Turn the hook on once per clone: `git config core.hooksPath .githooks`.
 ```
 LOCAL  ~/…/SigRobotics/F1Tenth                          GITHUB (Udog-ILLINOIS)                     UPSTREAM (forked from)
 ═══════════════════════════════                         ══════════════════════                     ══════════════════════
-F1Tenth/  ─────────────────────────── git repo ───────► f1tenth  (main)                            SIGRobotics-UIUC/f1tenth
+F1Tenth/  ─────────────────────────── git repo ───────► f1tenth_workspace  (main)                  (standalone, not a fork)
 │
 ├── README.md  .gitignore  .gitmodules        ┐
 ├── .githooks/                                │
@@ -24,10 +24,13 @@ F1Tenth/  ───────────────────────�
 │   ├── track_builder/  ═══ submodule ═══════════════════► AutoDRIVE  (f1tenth_multitrack) ┐
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
 │
-├── planners/forzaeth/
-│   ├── autodrive_forzaeth/                   your files, committed
-│   ├── race_stack/     ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
-│   └── build_cache/                          ✗ local only
+├── planners/
+│   ├── sigrobotics/    ═══ submodule ═══════════════════► f1tenth  (main)  club stack, PRs ───► SIGRobotics-UIUC/f1tenth
+│   │   └── ws/src/f1tenth_system/   (the club repo's own submodule ──► f1tenth/f1tenth_system)
+│   └── forzaeth/
+│       ├── autodrive_forzaeth/               your files, committed
+│       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
+│       └── build_cache/                      ✗ local only
 │
 ├── gym_ros_workspace/
 │   ├── f1tenth_gym_ros/ ══ submodule ═══════════════════► f1tenth_gym_ros  (dev-humble)  +edits ► f1tenth/f1tenth_gym_ros
@@ -42,15 +45,19 @@ F1Tenth/  ───────────────────────�
         ├── f1tenth_scale_tracks/ ═ submodule ═══════════► f1tenth_racetracks   (main) ────────► f1tenth/f1tenth_racetracks
         └── occupancy_maps/       ═ submodule ═══════════► f1tenth_maps         (master) ──────► CPS-TUWien/f1tenth_maps
 
-Legend:  ═══ submodule = f1tenth stores only a commit pointer to that fork's branch
+Legend:  ═══ submodule = f1tenth_workspace stores only a commit pointer to that fork's branch
          ✗ local only  = gitignored (also every venv/.venv, __pycache__, .DS_Store)
 ```
 
 ## How changes flow
 
+`planners/sigrobotics` is the club stack. Only stack work goes there: branch in
+`Udog-ILLINOIS/f1tenth`, push, then open a PR to `SIGRobotics-UIUC/f1tenth` (`gh pr create -R SIGRobotics-UIUC/f1tenth`).
+Everything else (sims, ForzaETH, raceline tools, data) lives in `f1tenth_workspace`.
+
 ```
  edit inside a submodule ──► git commit + git push        (goes to the fork, e.g. Udog-ILLINOIS/ForzaETH)
-                         └─► cd F1Tenth && git add <path> && git commit && git push   (moves f1tenth's pointer)
+                         └─► cd F1Tenth && git add <path> && git commit && git push   (moves f1tenth_workspace's pointer)
 
  fork changed on GitHub  ──► git submodule update --remote <path>  ──► commit + push in F1Tenth
 
