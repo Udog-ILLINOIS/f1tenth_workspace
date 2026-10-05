@@ -29,10 +29,13 @@ F1Tenth/
 ## Cloning
 
 Third-party code lives in our forks under `Udog-ILLINOIS`, linked here as git submodules
-(see `.gitmodules`). Each one tracks a branch of its fork.
+(see `.gitmodules`). Each one tracks a branch of its fork. Full diagram:
+[`docs/repo_structure.md`](docs/repo_structure.md). Keep it current: the hooks in `.githooks/` block a
+commit or push when a folder or submodule isn't in it.
 
 ```bash
 git clone --recurse-submodules https://github.com/Udog-ILLINOIS/f1tenth.git F1Tenth
+git config core.hooksPath .githooks    # turn on the repo-structure check (commit + push)
 git submodule update --remote          # pull the latest commit of each fork's tracked branch
 git add <path> && git commit           # record the new pointer here
 ```
