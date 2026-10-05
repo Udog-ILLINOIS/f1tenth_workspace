@@ -50,7 +50,7 @@ F1Tenth/  ───────────────────────�
         └── occupancy_maps/       ═ submodule ═══════════► f1tenth_maps         (master) ──────► CPS-TUWien/f1tenth_maps
 
 Legend:  ═══ submodule = f1tenth_workspace stores only a commit pointer to that fork's branch
-         ✗ local only  = gitignored (also every venv/.venv, __pycache__, .DS_Store)
+         ✗ local only  = gitignored (also every venv/.venv, __pycache__, .DS_Store, .vscode/)
 ```
 
 ## How changes flow

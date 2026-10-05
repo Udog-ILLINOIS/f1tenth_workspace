@@ -20,3 +20,6 @@ docs/F1Tenth_Papers/
 
 # Course lab work stays local
 gym_ros_workspace/labs/
+
+# Local VS Code settings
+.vscode/
