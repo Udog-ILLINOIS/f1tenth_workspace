@@ -30,7 +30,7 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── checked out on main (cleaning merged as 5 commits, 584a821; old cleaning branch kept on the fork)
+│   │   └── checked out on main (cleaning merged as 5 commits, 584a821; cleaning branch deleted)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack

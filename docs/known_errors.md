@@ -25,7 +25,7 @@ testing the fixes (2026-10-21), A = AutoDRIVE sim changes.
 | A4 | AutoDRIVE fork release | `./autodrive.sh fetch` still downloads `f1tenth_multitrack_v1`; only the local app has SimControl | Others don't get the Map button / autoconnect | medium, NEEDS DECISION: publish v2 |
 | A9 | `SimControl.cs` | The Map list now starts right of the label, but with a long label ("Map: IROS 2026") the gap is ~90 px instead of 8 (best-fit text overstates its width) | Cosmetic | low |
 | W1 | `f1tenth_workspace` submodule pointer | `planners/sigrobotics` pinned at `fd0d5a1` (4 Oct) | A fresh clone gets no perception, planning or control | medium, NEEDS DECISION |
-| W5 | `roboracer` fork | PR #10 has no description; `cleaning` is in no PR | The club builds older code | medium, NEEDS DECISION |
+| W5 | `roboracer` fork | PR #10 has no description (`cleaning` was merged into `main`, the PR head, and deleted) | Reviewers have no summary of the changes | low, NEEDS DECISION |
 | W6 | `planners/sigrobotics` | 10 leftover local branches, 3 agent worktrees | Clutter | low, NEEDS DECISION (deletes) |
 
 ## Redundancy review (2026-10-21)
