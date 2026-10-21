@@ -29,8 +29,8 @@ F1Tenth/  ───────────────────────�
 │
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
-│   │   ├── Dockerfile, docker-compose.yml, ws/src/autodrive_bridge/   (setup + sim bridge; planning etc. empty)
-│   │   └── remote f1tenth_old ──► Udog-ILLINOIS/f1tenth  (old club repo, dropped; keeps SimReadyBranch)
+│   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
+│   │   └── checked out on branch cleaning (fixes in progress, pushed to the fork; merge to main for a PR)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
@@ -58,6 +58,7 @@ Legend:  ═══ submodule = f1tenth_workspace stores only a commit pointer to
 `planners/sigrobotics` is the club stack. Only stack work goes there: commit to `main` in
 `Udog-ILLINOIS/roboracer`, push, then open a PR to `SIGRobotics-UIUC/roboracer`
 (`gh pr create -R SIGRobotics-UIUC/roboracer --head Udog-ILLINOIS:main`).
+Current work sits on the fork's `cleaning` branch; the workspace pointer records its latest commit.
 Everything else (sims, ForzaETH, raceline tools, data) lives in `f1tenth_workspace`.
 
 ```

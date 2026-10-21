@@ -21,7 +21,9 @@ AutoDRIVE's sensors and commands, the mapper builds the map, and the logger reco
 resets. In time trials ForzaETH does no online planning. Its local planner only overtakes
 other cars.
 
-Everything ROS runs in one container, `forzaeth_autodrive`. AutoDRIVE runs natively.
+Everything ROS runs in one container, `forzaeth_autodrive`. AutoDRIVE runs natively. The club
+stack's container (`planners/sigrobotics`) also publishes host port 4567, so stop it first
+(`cd planners/sigrobotics && docker compose down`); the sim connects to whichever bridge is on 4567.
 
 ## Layout
 
@@ -46,13 +48,14 @@ Names: a line is `<track>_<line>` (e.g. `autodrive_roboracer_min_curvature`), a 
 ```bash
 ./autodrive.sh sim          # 1280x720, "Very Low" quality (faster sensor rate)
 ./forzaeth.sh up
-./forzaeth.sh bridge        # then in the sim: connect to 127.0.0.1:4567 and switch to autonomous
+./forzaeth.sh bridge        # the sim connects by itself; ./autodrive.sh ctl status shows frames arriving
 ./forzaeth.sh race --line forza_iqp --speed 0.5 --laps 5 [--experiment raceline_comparison]
 ./forzaeth.sh compare       # every run under data/ except data/archive/; or: compare data/raceline_comparison
 ```
 
-Leave the bridge running all session. Restarting it drops the sim's connection, and you then
-have to reconnect in the sim. Everything else (`race`, `map`, `plan`, `stop`, `reset`)
+Leave the bridge running all session. The sim reconnects by itself after a bridge restart
+(checked with the club stack's bridge; if `./autodrive.sh ctl status` shows no frames, run
+`./autodrive.sh ctl reconnect`). Everything else (`race`, `map`, `plan`, `stop`, `reset`)
 restarts freely.
 
 ## A race, step by step

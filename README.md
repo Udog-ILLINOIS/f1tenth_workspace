@@ -11,12 +11,12 @@ F1Tenth/
   autodrive.sh              AutoDRIVE RoboRacer simulator launcher
   forzaeth.sh               ForzaETH race stack on AutoDRIVE: map, plan, swap racelines, logged races
   docker/                   compose files: sim.sh's lab mounts per stack, forzaeth.compose.yml
-  docs/                     sim_foxy.md, sim_humble.md, race_results.md, autodrive.md, forzaeth_autodrive.md
+  docs/                     sim_foxy.md, sim_humble.md, race_results.md, autodrive.md, forzaeth_autodrive.md, known_errors.md
   gym_ros_workspace/        f1tenth_gym_ros workspace that sim.sh runs (Foxy and Humble)
     f1tenth_gym_ros/        simulator repo (branch picks Foxy vs Humble)
     labs/                   lab<N>_<topic>, each its own git repo, mounted into the sim container
   planners/
-    sigrobotics/            club stack (Udog-ILLINOIS/f1tenth fork of SIGRobotics-UIUC/f1tenth), PRs go upstream
+    sigrobotics/            club stack (Udog-ILLINOIS/roboracer fork of SIGRobotics-UIUC/roboracer), PRs go upstream
     forzaeth/               ForzaETH on AutoDRIVE (see docs/forzaeth_autodrive.md)
       race_stack/           ForzaETH race_stack clone, ros2-humble (maps in stack_master/maps/)
       autodrive_forzaeth/   our ROS 2 package: AutoDRIVE bridge/adapter, mapper, run logger, scripts
@@ -45,7 +45,7 @@ git add <path> && git commit           # record the new pointer here
 |---|---|
 | `autodrive/track_builder` | `AutoDRIVE` (`f1tenth_multitrack`): TrackSelect plugin + custom tracks; built app is a release |
 | `autodrive/devkit` | `AutoDRIVE` (`AutoDRIVE-Devkit`, shallow) |
-| `planners/sigrobotics` | `f1tenth` (`main`): the club stack, PRs go to `SIGRobotics-UIUC/f1tenth` |
+| `planners/sigrobotics` | `roboracer` (`main`): the club stack, PRs go to `SIGRobotics-UIUC/roboracer` |
 | `planners/forzaeth/race_stack` | `ForzaETH` (`ros2-humble`) |
 | `gym_ros_workspace/f1tenth_gym_ros` | `f1tenth_gym_ros` (`dev-humble`) |
 | `raceline_optimization/tum_optimizer` | `global_racetrajectory_optimization` (`master`) |
@@ -58,8 +58,10 @@ and `gym_ros_workspace/labs/` (course labs stay local, so the lab links below on
 
 **ForzaETH on AutoDRIVE** (separate container, separate from the stacks below): see
 [`docs/forzaeth_autodrive.md`](docs/forzaeth_autodrive.md). Quick start: `./autodrive.sh sim`,
-`./forzaeth.sh up`, `./forzaeth.sh bridge` (click Connect + Autonomous in the sim), then
-`./forzaeth.sh race --line forza_iqp --speed 0.3 --laps 5`.
+`./forzaeth.sh up`, `./forzaeth.sh bridge` (the sim connects by itself), then
+`./forzaeth.sh race --line forza_iqp --speed 0.3 --laps 5`. The club stack has its own container and
+bridge (`planners/sigrobotics/README.md`). Both publish host port 4567, so run one at a time:
+`./forzaeth.sh down` or `cd planners/sigrobotics && docker compose down` stops the other.
 
 # How to launch the sim stacks
 
