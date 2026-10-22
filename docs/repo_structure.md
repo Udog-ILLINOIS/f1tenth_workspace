@@ -30,7 +30,7 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── checked out on main (ad4acf4: SIGRobotics main with #11 wall follower merged in; PR #10 head)
+│   │   └── checked out on main (06c192d: new README on top of the #11 merge; PR #10 head)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
