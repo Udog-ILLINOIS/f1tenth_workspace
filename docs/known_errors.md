@@ -25,7 +25,6 @@ testing the fixes (2026-10-21), A = AutoDRIVE sim changes.
 | T8 / A8 | sim frame rate | App Nap turned off (`NSAppSleepDisabled`, 2026-10-21): the bridge gets 40-55 frames/s with the sim in front or behind, so the background was not the cause. The 94.7 frames/s was a peak in one 30 s log window (the same log had 64, 88, 46.5); the bridge's own work is ~1 ms/frame, so the round trip (sim or Docker port forwarding) limits the rate. A freshly started sim gave 104-112 frames/s (2026-10-21), so the rate falls the longer the sim runs; cause not yet found | Slower control loop than the render rate (~115 fps) | low |
 | A4 | AutoDRIVE fork release | `./autodrive.sh fetch` still downloads `f1tenth_multitrack_v1`; only the local app has SimControl | Others don't get the Map button / autoconnect | medium, NEEDS DECISION: publish v2 |
 | A9 | `SimControl.cs` | The Map list now starts right of the label, but with a long label ("Map: IROS 2026") the gap is ~90 px instead of 8 (best-fit text overstates its width) | Cosmetic | low |
-| W1 | `f1tenth_workspace` submodule pointer | `planners/sigrobotics` pinned at `fd0d5a1` (4 Oct) | A fresh clone gets no perception, planning or control | medium, NEEDS DECISION |
 | W6 | `planners/sigrobotics` | 10 leftover local branches, 3 agent worktrees | Clutter | low, NEEDS DECISION (deletes) |
 
 ## Redundancy review (2026-10-21)
@@ -43,7 +42,7 @@ Changes from 2026-10-20/21 that duplicate existing infrastructure or each other.
 | R7 | `imu_reset_hold_frames` (S10): 3 extra IMU frames dropped after a reset command | the reset frames' own IMU drop | measured 2026-10-21 (`bag_live_b1`): a reset of a car at 4.1 m/s without the hold reads 60.9, 15.6, 4.8, 1.4, 0.6 m/s^2 off gravity on the teleport frame and the 4 after it; with a reset command the teleport comes 2 frames into the 5 zero frames, so the 3 extra frames cover the tail (with them: max 0.3 m/s^2). Keep |
 | R8 | `race_monitor.py` metrics through ground truth | | compare in the map frame (N4) |
 
-## Fixed (2026-10-21, not yet committed)
+## Fixed (2026-10-21/22, committed; in SIGRobotics main through PRs #10-#12)
 
 Each group: a solver and a critic (plan review before code for medium/high, diff review after; low:
 one final pass). High (S2/T4/S27/A6) also had two independent verifiers and a live sim test.
@@ -81,6 +80,7 @@ Live checks are in the last column.
 | N3 | The ~0.8 m forward pose error on the iros2026 start straight was N1's wheelspin, not Cartographer | live: estimate vs ground truth on the start straight max 0.13 m to s ~8 m, 0.21 m to s ~15 m (was ~0.8 m) |
 | T5 | `racecar.ini` `width_opt` reverted 0.80 -> 0.50: the 0.22 m error behind the change was N4's skewed metric, and 0.80 did not stop the crash (N1). `test_vehicle_params.py` checks only `width_opt >= width`; `ws/tracks/iros2026_w080` kept as a fallback | live: closest pose centre to a wall over 3 iros2026 laps 0.200 m incl. the launch pass of the first bend (bar >= ~0.19 m), after respawns too (`bag_live_b1`); berlin 0.224 m |
 | W5 | PR #10 retitled with a full description, incl. where the AutoDRIVE sim changes live; SIGRobotics main (#11 wall follower, merged 2026-10-22) merged into fork main (c3cb77c), wall follower loads `vehicle.yaml` (ad4acf4) | 86 tests in the container (control 26, perception 19, planning 18, bridge 23); `map_track.sh --wall-follow` after the merge not run live |
+| W1 | `planners/sigrobotics` follows roboracer `main` (was pinned at `fd0d5a1`); now at 6019987, identical to SIGRobotics main after PRs #10 (pipeline), #11 (wall follower), #12 (README), all merged 2026-10-22 | `git submodule status`; GitHub compare: identical |
 | N2 | After a respawn nothing sent a stop until fast_bridge's 0.5 s `cmd_timeout`, the car rolled ~1.45 m. fast_bridge now detects the reset in the frame (collision count, position jump; restricted topics) or from its reset command, replies zeros for `reset_frames` (5) frames and publishes `sim_reset` before the frame's sensors; the gate subscribes to it only (R1) | `test_fast_bridge.py`; live 2026-10-21 (`ws/log/bag_live_b1`): mid-race reset command at 3.5 m/s and `ctl track` at 4.1 m/s: sim throttle 0 from the first frame after the event, car travel after the teleport 0.002 m (was 1.45 m), no /drive while the gate is closed; `ctl track` gives exactly one event (position jumped) |
 | T4b | The gate's 11-14 s wait: `optimize_every_n_nodes` 20 with a node every 0.5 s on a parked car. `localization.lua` `motion_filter.max_time_seconds` 0.04, gate `debounce` 0.5 s | `test_localization_gate.py`; live: start localized 1.6 s after the trajectory started (first /drive 4.2-4.4 s after launch, was 13.9 s); after a mid-race reset 3.2 s and 2.4 s (~2 s of it before the gate starts the new trajectory); no global match during the wait. Still to check: Cartographer CPU on the real car below ~2 m/s |
 

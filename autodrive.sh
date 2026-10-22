@@ -10,9 +10,10 @@
 #   ./autodrive.sh ctl CMD      send CMD to the sim's control port (127.0.0.1:4580), e.g. status, tracks,
 #       track NAME, connect, disconnect, reconnect, kick, click BUTTON, screenshot [PATH]
 #       (SimControl in autodrive/track_builder/track_select; the sim also has a Map button)
-# The ROS 2 side lives in the ForzaETH container: see ./forzaeth.sh and docs/forzaeth_autodrive.md.
+# The ROS 2 side is one of two stacks, each with its own bridge on port 4567 (one at a time):
+# the club stack (planners/sigrobotics, docker compose) or ForzaETH (./forzaeth.sh); see docs/autodrive.md.
 # The devkit (autodrive/devkit, branch AutoDRIVE-Devkit of our AutoDRIVE fork) is kept for
-# reference; forzaeth.sh uses planners/forzaeth/autodrive_forzaeth's fast_bridge instead.
+# reference; both stacks use their own fast_bridge instead.
 set -euo pipefail
 root="$(cd "$(dirname "$0")" && pwd)"
 dir="$root/autodrive/simulator_multitrack"

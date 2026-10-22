@@ -30,7 +30,7 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── checked out on main (06c192d: new README on top of the #11 merge; PR #10 head)
+│   │   └── checked out on main (6019987 = SIGRobotics main: #10, #11, #12 merged; fork and club identical)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
@@ -58,7 +58,8 @@ Legend:  ═══ submodule = f1tenth_workspace stores only a commit pointer to
 `planners/sigrobotics` is the club stack. Only stack work goes there: commit to `main` in
 `Udog-ILLINOIS/roboracer`, push, then open a PR to `SIGRobotics-UIUC/roboracer`
 (`gh pr create -R SIGRobotics-UIUC/roboracer --head Udog-ILLINOIS:main`).
-Work is on the fork's `main` (cleaning was merged into it as five commits); the workspace pointer records its latest commit.
+Work is on the fork's `main`; the workspace pointer records its latest commit. After a PR is merged, fast-forward the fork to
+`upstream/main` (`git fetch upstream && git merge upstream/main && git push`) so the next PR shows only new commits.
 Everything else (sims, ForzaETH, raceline tools, data) lives in `f1tenth_workspace`.
 
 ```
