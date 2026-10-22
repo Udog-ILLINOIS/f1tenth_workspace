@@ -18,7 +18,7 @@ set -euo pipefail
 root="$(cd "$(dirname "$0")" && pwd)"
 dir="$root/autodrive/simulator_multitrack"
 app="$dir/AutoDRIVE Simulator.app"
-release=https://github.com/Udog-ILLINOIS/AutoDRIVE/releases/download/f1tenth_multitrack_v1/autodrive_simulator_multitrack_macos.zip
+release=https://github.com/Udog-ILLINOIS/AutoDRIVE/releases/download/f1tenth_multitrack_v2/autodrive_simulator_multitrack_macos.zip
 
 case "${1:-}" in
   fetch)

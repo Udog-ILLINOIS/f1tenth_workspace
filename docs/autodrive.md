@@ -9,7 +9,7 @@ deleted. We run our multi-track copy of it: the stock app plus the `TrackSelect`
 ```
 autodrive/
   simulator_multitrack/AutoDRIVE Simulator.app   local only: ./autodrive.sh fetch downloads it from
-                                                 github.com/Udog-ILLINOIS/AutoDRIVE/releases (f1tenth_multitrack_v1)
+                                                 github.com/Udog-ILLINOIS/AutoDRIVE/releases (f1tenth_multitrack_v2)
   track_builder/   submodule, Udog-ILLINOIS/AutoDRIVE branch f1tenth_multitrack: plugin source,
                    custom tracks, build_track.py (rebuilding needs the stock 2026-iros app, see its README)
   devkit/          submodule, Udog-ILLINOIS/AutoDRIVE branch AutoDRIVE-Devkit (reference only)
