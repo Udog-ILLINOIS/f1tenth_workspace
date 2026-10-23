@@ -20,7 +20,6 @@ testing the fixes (2026-10-21), A = AutoDRIVE sim changes.
 | S3b | `control/control/pure_pursuit_node.py` | No world -> map transform for `/ground_truth/pose` (it is now refused instead of followed) | No ground-truth debug drive | low, NEEDS DECISION |
 | S10 | `fast_bridge.py` | IMU held for `imu_reset_hold_frames` (3) frames after a bridge reset. Measured (`bags/iros_new`, bridge without the hold, parked car): after the reset frames' own drop the release reads at most ~3 m/s^2 off gravity, no spike; a reset of a moving car needs them (R7, measured). Respawns, track switches and Scene Reset bypass the bridge's IMU drop: their teleport is announced on `sim_reset`, but its IMU frame is not dropped (decided: with restricted topics the spike only reaches the trajectory the gate discards; without them, as in competition, it reaches the running trajectory) | Maybe one IMU spike into Cartographer | low |
 | S32 | `planning/config/racecar.ini` | Tyre B/C/E, mu 0.7, forces are estimates; iros2026 vx sits at the 10 m/s `v_max` cap | Speed profile may not match the sim car | low, needs sim tuning |
-| S35 | `autodrive_bridge/config/adapter.yaml` | `speed_kp_brake: 0.1` not tuned | Braking strength unknown above `speed_scale` 0.5 | low, needs sim tuning |
 | T2 | `ros2 launch` | SIGTERM to `ros2 launch` alone orphans its nodes (ROS launch behaviour) | Documented in docs/pipeline.md: stop with Ctrl-C or `kill -INT -- -<pgid>` | low |
 | T8 / A8 | sim frame rate | App Nap turned off (`NSAppSleepDisabled`, 2026-10-21): the bridge gets 40-55 frames/s with the sim in front or behind, so the background was not the cause. The 94.7 frames/s was a peak in one 30 s log window (the same log had 64, 88, 46.5); the bridge's own work is ~1 ms/frame, so the round trip (sim or Docker port forwarding) limits the rate. A freshly started sim gave 104-112 frames/s (2026-10-21), so the rate falls the longer the sim runs; cause not yet found | Slower control loop than the render rate (~115 fps) | low |
 | A9 | `SimControl.cs` | The Map list now starts right of the label, but with a long label ("Map: IROS 2026") the gap is ~90 px instead of 8 (best-fit text overstates its width) | Cosmetic | low |
@@ -39,6 +38,12 @@ Changes from 2026-10-20/21 that duplicate existing infrastructure or each other.
 | R6 | pure pursuit's pose checks (age, frame, 3 m) and the gate's hold both stop driving on a bad pose | | keep both (the checks also cover the real car); at a sim reset fast_bridge's zero replies act first, the gate's hold keeps the car parked until relocalized |
 | R7 | `imu_reset_hold_frames` (S10): 3 extra IMU frames dropped after a reset command | the reset frames' own IMU drop | measured 2026-10-21 (`bag_live_b1`): a reset of a car at 4.1 m/s without the hold reads 60.9, 15.6, 4.8, 1.4, 0.6 m/s^2 off gravity on the teleport frame and the 4 after it; with a reset command the teleport comes 2 frames into the 5 zero frames, so the 3 extra frames cover the tail (with them: max 0.3 m/s^2). Keep |
 | R8 | `race_monitor.py` metrics through ground truth | | compare in the map frame (N4) |
+
+## Fixed (2026-10-22, on Udog-ILLINOIS/roboracer main; not yet in SIGRobotics)
+
+| ID | Fix | Checked |
+|---|---|---|
+| T16, S35 | Racing was jerky ("slamming gas and brake"): the mintime speed plan went straight from full drive to full brake (Porto ax -5.6 .. +6.2 m/s^2, faster than the adapter's 2.5 m/s^2 ramp), and `speed_kp_brake: 0.1` turned `/odom` noise (std 0.16 m/s) into brake taps. `racecar.ini`: `safe_traj` on (ax +2.5 / -3.5, ay 7.0 m/s^2), `penalty_F` 0.01 -> 1.0; `adapter.yaml`: `speed_kp_brake` 0.1 -> 0.03. Porto re-planned (old line kept as `tracks/porto/raceline_before_safe_traj.csv`) | Porto, `speed_scale` 0.5, ground truth: acceleration swings 36.8 -> 2.7 per 10 s, jerk rms 27 -> 4.6 m/s^3, min accel -5.6 -> -1.8 m/s^2; flying laps 13.32-13.58 s -> 13.78-13.80 s (+0.36 s), 0 collisions; 86 tests pass. Other tracks not re-planned yet |
 
 ## Fixed (2026-10-21/22, committed; in SIGRobotics main through PRs #10-#12)
 
