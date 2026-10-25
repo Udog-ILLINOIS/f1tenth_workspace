@@ -30,9 +30,10 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── checked out on fork branch test_pr15_gap_follow (7348e26 = SIGRobotics main 4e27644 + PR #15 merged + our fixes + docs, --gap-follow experimental, known_errors T17)
-│   │       fork branch classical_overtaking: 96d3191 = SIGRobotics main 4e27644 + obstacle avoidance, avoid:=true
-│   │       local main: 450efb7 = merge of 4e27644 into c5aed02, not pushed to the fork yet; older WIP in stash@{0}
+│   │   └── checked out on fork main (366ca62 = SIGRobotics main 8b9bd2e (PR #15) + c5aed02 smoother racing
+│   │       + test_pr15_gap_follow + classical_overtaking; 9 ahead of SIGRobotics main, not PR'd yet)
+│   │       fork branches test_pr15_gap_follow (7348e26) and classical_overtaking (96d3191): both merged into main
+│   │       older WIP in stash@{0}
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
