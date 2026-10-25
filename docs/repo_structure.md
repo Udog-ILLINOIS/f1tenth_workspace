@@ -30,8 +30,8 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── checked out on main (450efb7 = local merge of SIGRobotics main 4e27644 [PR #14 obstacle spliner] into c5aed02; not pushed to the fork yet; local WIP in stash@{0})
-│   │       fork branch classical_overtaking = SIGRobotics main 4e27644 (local branch exists, not checked out)
+│   │   └── checked out on fork branch classical_overtaking (96d3191 = SIGRobotics main 4e27644 + obstacle avoidance, avoid:=true)
+│   │       local main: 450efb7 = merge of 4e27644 into c5aed02, not pushed to the fork yet; older WIP in stash@{0}
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
