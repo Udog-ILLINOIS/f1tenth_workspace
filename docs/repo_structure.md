@@ -24,14 +24,15 @@ F1Tenth/  ───────────────────────�
 │
 ├── autodrive/
 │   ├── simulator_multitrack/                 ✗ local only ◄── ./autodrive.sh fetch ── AutoDRIVE  release f1tenth_multitrack_v2
+│   │                                         (the local build adds MapView, f3b447a; not in a release yet)
 │   ├── track_builder/  ═══ submodule ═══════════════════► AutoDRIVE  (f1tenth_multitrack) ┐
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
 │
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── checked out on fork main (366ca62 = SIGRobotics main 8b9bd2e (PR #15) + c5aed02 smoother racing
-│   │       + test_pr15_gap_follow + classical_overtaking; 9 ahead of SIGRobotics main, not PR'd yet)
+│   │   └── checked out on fork main (486a14f = SIGRobotics main 8b9bd2e (PR #15) + c5aed02 smoother racing
+│   │       + test_pr15_gap_follow + classical_overtaking + map_view; 10 ahead of SIGRobotics main, not PR'd yet)
 │   │       fork branches test_pr15_gap_follow (7348e26) and classical_overtaking (96d3191): both merged into main
 │   │       older WIP in stash@{0}
 │   └── forzaeth/
