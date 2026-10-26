@@ -34,6 +34,7 @@ F1Tenth/  ───────────────────────�
 │   │   └── checked out on fork main (486a14f = SIGRobotics main 8b9bd2e (PR #15) + c5aed02 smoother racing
 │   │       + test_pr15_gap_follow + classical_overtaking + map_view; 10 ahead of SIGRobotics main, not PR'd yet)
 │   │       fork branches test_pr15_gap_follow (7348e26) and classical_overtaking (96d3191): both merged into main
+│   │       fork branch mcl_merge (b816662): SIGRobotics main + PR #17 (MCL) with conflicts resolved, PR #18
 │   │       older WIP in stash@{0}
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
