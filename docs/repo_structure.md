@@ -24,6 +24,7 @@ F1Tenth/  ───────────────────────�
 │
 ├── autodrive/
 │   ├── simulator_multitrack/                 ✗ local only ◄── ./autodrive.sh fetch ── AutoDRIVE  release f1tenth_multitrack_v3 (f3b447a)
+│   │                                         (the local build is track_builder 7322491: adds the block bar and the aligned Mapping tab; not released)
 │   ├── track_builder/  ═══ submodule ═══════════════════► AutoDRIVE  (f1tenth_multitrack) ┐
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
 │

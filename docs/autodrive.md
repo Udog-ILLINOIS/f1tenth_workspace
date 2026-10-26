@@ -57,6 +57,29 @@ one switches to it the same way (car at the new track's start pose, which is als
 `/autodrive/reset_command` and `ctl track` on the current track put it). Known sim problems:
 [`known_errors.md`](known_errors.md).
 
+**Map view** (right-hand HUD, in place of the Front Camera Preview; `MapView.cs`, `MapAccuracy.cs`,
+`MapBlocks.cs` in the plugin). The HUD is hidden at some window sizes: `ctl click HUD` toggles it.
+- **Ground Truth** tab: the active track's real walls, drawn from its mesh in the style of the stack's
+  map, and the car's real pose every frame. The car is drawn to scale (0.55 x 0.31 m) in both tabs.
+- **Mapping** tab: the occupancy grid the club stack maps or localizes on (live while mapping) and
+  where the stack thinks the car is (TF `map -> base_link`), thresholded as `save_map` writes it. It
+  comes from the club stack's `autodrive_bridge map_view` node (started by `autodrive_launch.py`) over
+  TCP to 127.0.0.1:4581 (`host.docker.internal` from the container). Once the stack sends poses, the
+  map is placed where its walls best fit the real ones and drawn in the Ground Truth frame and scale,
+  so switching tabs leaves the track in place; before that it has the same scale, centred, and the
+  status line says "not aligned yet". It clears on a track switch until the stack sends its map again.
+- Under the figure: **Map error** (mean distance of the map's walls from the real wall surface; a
+  perfect 5 cm map scores ~1.3 cm on Porto) and **Localization error** (mean distance of the
+  estimated `base_link` from the real one at the time of each estimate, last 5 s). On `porto_v2`:
+  ~2.2 cm and ~2.5-3.5 cm.
+- **Block bar** (Ground Truth tab only), the thin strip above the figure: drag its dark grey square
+  onto the track to put a 0.3 x 0.3 x 0.4 m block on the real track there (the lidar sees it, the car
+  collides with it); drag a block on the figure to move it, or back into the strip to remove it.
+  The control port does the same with `ctl obstacle <x> <y> [size]` (ROS world frame) and
+  `ctl obstacle clear`; `ctl drag <x0> <y0> <x1> <y1>` replays a mouse drag (positions as `clickat`,
+  for tests). Blocks are gone after a Scene Reset.
+- Tabs from the control port: `ctl click "Ground Truth Tab"`, `ctl click "Mapping Tab"`.
+
 The sim sends one sensor frame per rendered frame, so the small low-quality window is what
 gives a fast control loop: about 104-112 frames/s from a freshly started sim, falling to
 ~40-55 after hours of running (cause not found, `known_errors.md` T8), against about 12 Hz
