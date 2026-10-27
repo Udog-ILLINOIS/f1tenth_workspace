@@ -31,7 +31,8 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── fork main 27218e3 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view (1 ahead, not PR'd)
+│   │   └── fork main 52e4fda = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
+│   │       search / re-anchoring (2 ahead, not PR'd)
 │   │       the submodule checkout is still on 486a14f (main before that merge) with uncommitted WIP (segments, teleop)
 │   │       fork has only main: test_pr15_gap_follow, classical_overtaking, mcl_merge merged and deleted 2026-10-27
 │   │       older WIP in stash@{0}
