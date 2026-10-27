@@ -31,10 +31,9 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── checked out on fork main (486a14f = SIGRobotics main 8b9bd2e (PR #15) + c5aed02 smoother racing
-│   │       + test_pr15_gap_follow + classical_overtaking + map_view; 10 ahead of SIGRobotics main, not PR'd yet)
-│   │       fork branches test_pr15_gap_follow (7348e26) and classical_overtaking (96d3191): both merged into main
-│   │       fork branch mcl_merge (b816662): SIGRobotics main + PR #17 (MCL) with conflicts resolved, PR #18
+│   │   └── fork main 27218e3 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view (1 ahead, not PR'd)
+│   │       the submodule checkout is still on 486a14f (main before that merge) with uncommitted WIP (segments, teleop)
+│   │       fork has only main: test_pr15_gap_follow, classical_overtaking, mcl_merge merged and deleted 2026-10-27
 │   │       older WIP in stash@{0}
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
