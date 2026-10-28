@@ -31,10 +31,10 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── fork main 3affd53 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
+│   │   └── fork main 59975d9 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
 │   │       search / re-anchoring, review fixes, hybrid raceline-first search, MCL re-anchor agreement/burst
-│   │       hold, build_raceline mintime fix + fallback + provenance (6 ahead, not PR'd)
-│   │       submodule checkout on fork main 3affd53, clean; Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
+│   │       hold, build_raceline mintime fix + fallback + provenance, MCL expected start pose (7 ahead, not PR'd)
+│   │       submodule checkout on fork main 59975d9, clean; Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
 │   │       fork has only main: test_pr15_gap_follow, classical_overtaking, mcl_merge merged and deleted 2026-10-27
 │   │       stash@{0}: overtaking idea (mintime raceline segment around the obstacle, teleop, deps); conflicts
 │   │                  with 3affd53 in tum_mintime.patch, raceline.py, docs/pipeline.md
