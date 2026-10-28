@@ -62,12 +62,18 @@ one switches to it the same way (car at the new track's start pose, which is als
 - **Ground Truth** tab: the active track's real walls, drawn from its mesh in the style of the stack's
   map, and the car's real pose every frame. The car is drawn to scale (0.55 x 0.31 m) in both tabs.
 - **Mapping** tab: the occupancy grid the club stack maps or localizes on (live while mapping) and
-  where the stack thinks the car is (TF `map -> base_link`), thresholded as `save_map` writes it. It
+  where the stack thinks the car is (TF `map -> base_link`), thresholded as `save_map` writes it. As
+  in Ground Truth, the floor is drawn only on the track: the free cells around the stack's pose (no
+  pose: the largest free region not reaching the map's edge), wall gaps up to ~4 cells closed for
+  that; unknown space, outside the outer wall and inside islands stay dark (map_server marks those
+  free). It
   comes from the club stack's `autodrive_bridge map_view` node (started by `autodrive_launch.py`) over
   TCP to 127.0.0.1:4581 (`host.docker.internal` from the container). Once the stack sends poses, the
   map is placed where its walls best fit the real ones and drawn in the Ground Truth frame and scale,
-  so switching tabs leaves the track in place; before that it has the same scale, centred, and the
-  status line says "not aligned yet". It clears on a track switch until the stack sends its map again.
+  so switching tabs leaves the track in place. Without poses (no stack running, only its last map) the
+  map is placed by its walls alone (turns every 5 deg, refined), so it has the Ground Truth
+  orientation then too; only when no turn clearly fits best is it centred, with "not aligned yet".
+  It clears on a track switch until the stack sends its map again.
 - Under the figure: **Map error** (mean distance of the map's walls from the real wall surface; a
   perfect 5 cm map scores ~1.3 cm on Porto) and **Localization error** (mean distance of the
   estimated `base_link` from the real one at the time of each estimate, last 5 s). On `porto_v2`:

@@ -24,18 +24,20 @@ F1Tenth/  ───────────────────────�
 │
 ├── autodrive/
 │   ├── simulator_multitrack/                 ✗ local only ◄── ./autodrive.sh fetch ── AutoDRIVE  release f1tenth_multitrack_v3 (f3b447a)
-│   │                                         (the local build is track_builder 7322491: adds the block bar and the aligned Mapping tab; not released)
+│   │                                         (the local build is track_builder 7ba8a65: + Mapping map placement kept through resets, floor only on the track; not released)
 │   ├── track_builder/  ═══ submodule ═══════════════════► AutoDRIVE  (f1tenth_multitrack) ┐
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
 │
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── fork main 42eaa39 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
-│   │       search / re-anchoring, review fixes, hybrid raceline-first search (4 ahead, not PR'd)
-│   │       submodule checkout on fork main 42eaa39, clean
+│   │   └── fork main 3affd53 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
+│   │       search / re-anchoring, review fixes, hybrid raceline-first search, MCL re-anchor agreement/burst
+│   │       hold, build_raceline mintime fix + fallback + provenance (6 ahead, not PR'd)
+│   │       submodule checkout on fork main 3affd53, clean; Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
 │   │       fork has only main: test_pr15_gap_follow, classical_overtaking, mcl_merge merged and deleted 2026-10-27
-│   │       stash@{0}: overtaking idea (mintime raceline segment around the obstacle, teleop, deps)
+│   │       stash@{0}: overtaking idea (mintime raceline segment around the obstacle, teleop, deps); conflicts
+│   │                  with 3affd53 in tum_mintime.patch, raceline.py, docs/pipeline.md
 │   │       stash@{1}: older WIP (segments, teleop, docs)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
