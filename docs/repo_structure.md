@@ -33,9 +33,10 @@ F1Tenth/  ───────────────────────�
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
 │   │   └── fork main 42eaa39 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
 │   │       search / re-anchoring, review fixes, hybrid raceline-first search (4 ahead, not PR'd)
-│   │       the submodule checkout is still on 486a14f (main before that merge) with uncommitted WIP (segments, teleop)
+│   │       submodule checkout on fork main 42eaa39, clean
 │   │       fork has only main: test_pr15_gap_follow, classical_overtaking, mcl_merge merged and deleted 2026-10-27
-│   │       older WIP in stash@{0}
+│   │       stash@{0}: overtaking idea (mintime raceline segment around the obstacle, teleop, deps)
+│   │       stash@{1}: older WIP (segments, teleop, docs)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
 │       ├── race_stack/ ═══ submodule ═══════════════════► ForzaETH  (ros2-humble)  +2 fixes ──► ForzaETH/race_stack
