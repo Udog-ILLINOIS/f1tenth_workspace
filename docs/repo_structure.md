@@ -32,20 +32,19 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── fork main fc79b0d = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
+│   │   └── fork main 291cfee = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + MCL global
 │   │       search / re-anchoring, review fixes, hybrid raceline-first search, MCL re-anchor agreement/burst
 │   │       hold, build_raceline mintime fix + fallback + provenance, MCL expected start pose, MCL fit-gated
 │   │       re-anchor/relocate + per-message odometry jumps 745fad5, full-stack review fixes a21e998,
-│   │       merge of pp_adaptive_lookahead c812cec,
-│   │       adaptive lookahead on by default fc79b0d (13 ahead of SIGRobotics main, not PR'd)
-│   │       submodule checkout on fork main fc79b0d, clean;
+│   │       merge of pp_adaptive_lookahead c812cec, adaptive lookahead on by default fc79b0d,
+│   │       test_pure_pursuit off-case fix d8a48d1, map_view removed 291cfee (sim tooling, to move to the
+│   │       AutoDRIVE side; the app's Mapping tab gets no data until then). PR'd as SIGRobotics #19 (open)
+│   │       submodule checkout on fork main 291cfee, clean;
 │   │       Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
 │   │       fork branches: main; overtaking_mintime_segment 4f7c1ca = main 59975d9 + offline overtaking
 │   │       segments (plan_segment, TUM open-segment patch; needs image sigrobotics-overtaking:dev or a rebuild),
-│   │       teleop hold keys; not PR'd. test_pr15_gap_follow, classical_overtaking, mcl_merge deleted 2026-10-27
-│   │       pp_adaptive_lookahead 2c7dfd5 = main 59975d9 + curvature-adaptive pure pursuit lookahead
-│   │       (adaptive_lookahead:=true, off by default; porto_v2/berlin clean at speed_scale 1.0); merged into
-│   │       fork main c812cec 2026-10-29, not PR'd
+│   │       teleop hold keys; not PR'd. test_pr15_gap_follow, classical_overtaking deleted 2026-10-27;
+│   │       mcl_merge (local) and pp_adaptive_lookahead (merged into main) deleted 2026-10-29
 │   │       stash@{0}: overtaking idea, now committed as overtaking_mintime_segment 4f7c1ca (kept as backup)
 │   │       stash@{1}: older WIP (segments, teleop, docs)
 │   └── forzaeth/
