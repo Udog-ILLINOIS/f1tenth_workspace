@@ -56,7 +56,7 @@ alert() {   # loud banner + terminal bell: the new map did NOT become the defaul
 if [ "$status" -eq 1 ] || [ ! -f "$tracks/$name/raceline.csv" ]; then
   if [ -f "$tracks/$name/map.pbstream" ]; then
     alert "RACELINE FAILED for $name (map saved, no raceline; see build_raceline above)" \
-      "Retry the raceline: docker compose -f planners/sigrobotics/docker-compose.yml exec ros bash -lc 'source install/setup.bash; ros2 run planning build_raceline '"
+      "Retry the raceline: docker compose -f planners/sigrobotics/docker-compose.yml exec ros bash -lc 'source install/setup.bash; ros2 run planning build_raceline $name'"
   else
     alert "MAPPING FAILED for $name (no map saved; see the errors above)" "Run ./map.sh again"
   fi
