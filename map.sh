@@ -7,7 +7,8 @@
 #                                  (ros2 run autodrive_bridge teleop_keyboard in the container)
 # Needs ./getup.sh first (container, bridge, connected sim). The map goes to tracks/<track>_<date>_<time>/
 # (planners/sigrobotics/ws/tracks); if it gets a clean mintime raceline, tracks/<track> becomes a symlink
-# to it. A fallback raceline asks first; no raceline leaves the default alone. The first time, the old
+# to it. A fallback raceline asks first; a failed raceline or mapping keeps the old default and prints a
+# REVERTED banner (with a terminal bell). The first time, the old
 # tracks/<track>/ folder is renamed to tracks/<track>_<date of its map>/ (nothing is deleted).
 set -euo pipefail
 root="$(cd "$(dirname "$0")" && pwd)"
@@ -39,12 +40,35 @@ status=0
 "${compose[@]}" exec ros bash -c 'exec scripts/map_track.sh "$@"' map "$name" ${follow:+"$follow"} \
   ${args[@]+"${args[@]}"} || status=$?
 
+current() {   # what tracks/<track> races now
+  if [ -L "$tracks/$track" ]; then readlink "$tracks/$track"
+  elif [ -e "$tracks/$track" ]; then echo "$track/ (the original folder)"
+  else echo "nothing (no map for $track yet)"; fi
+}
+alert() {   # loud banner + terminal bell: the new map did NOT become the default
+  printf '\a\n' >&2
+  printf '%s\n' "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" \
+    "!!  $1" "!!  REVERTED: $track still races $(current)" "!!  $2" \
+    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" >&2
+  printf '\a' >&2
+}
+
 if [ "$status" -eq 1 ] || [ ! -f "$tracks/$name/raceline.csv" ]; then
-  echo "== no raceline for $name: tracks/$track left as it was" >&2; exit 1
+  if [ -f "$tracks/$name/map.pbstream" ]; then
+    alert "RACELINE FAILED for $name (map saved, no raceline; see build_raceline above)" \
+      "Retry the raceline: docker compose -f planners/sigrobotics/docker-compose.yml exec ros bash -lc 'source install/setup.bash; ros2 run planning build_raceline '"
+  else
+    alert "MAPPING FAILED for $name (no map saved; see the errors above)" "Run ./map.sh again"
+  fi
+  exit 1
 fi
 if [ "$status" -eq 2 ]; then
+  printf '\a'
   read -rp "$name has a FALLBACK raceline (not clean mintime, see above). Make it the default for $track anyway? [y/N] " ans
-  [[ "$ans" == [yY]* ]] || { echo "== tracks/$track left as it was; race the new map with: ./go.sh $name"; exit 2; }
+  if [[ "$ans" != [yY]* ]]; then
+    alert "RACELINE NOT CLEAN for $name (fallback line, not TUM mintime)" "Race the new map anyway with: ./go.sh $name"
+    exit 2
+  fi
 fi
 
 link="$tracks/$track"
