@@ -16,7 +16,7 @@ F1Tenth/  ───────────────────────�
 ├── .githooks/   (git: structure check)       │
 ├── .claude/hooks/ + settings.json (Claude)   │
 ├── sim.sh  autodrive.sh  forzaeth.sh         │
-├── getup.sh  go.sh  (sim up / race)         │
+├── getup.sh go.sh map.sh (up/race/map)    │
 ├── docker/                                   │  your files, committed
 ├── docs/*.md                                 │  directly in f1tenth
 ├── racelines/{autodrive_roboracer,iros2026}  │
