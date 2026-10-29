@@ -86,6 +86,24 @@ one switches to it the same way (car at the new track's start pose, which is als
   for tests). Blocks are gone after a Scene Reset.
 - Tabs from the control port: `ctl click "Ground Truth Tab"`, `ctl click "Mapping Tab"`.
 
+**Gamepad** (`Gamepad.cs` in the plugin). Drives the car in **Manual** mode only. Autonomous mode is
+always the bridge, and Manual without a pad is the stock keyboard (W/S, A/D). macOS doesn't see
+XInput pads (Logitech F710/F310 in X mode, Xbox 360 pads), so the plugin reads them over USB with
+libusb (`brew install libusb`; without it the gamepad is off). The pad is opened by itself whenever it
+is plugged in, with a short buzz and LED 1, and `ctl status` shows it as `"gamepad"`. The keyboard
+still works while a pad is open.
+- RT throttle (proportional to how far it is pulled, times the power level), LT brake then reverse
+  once stopped, left stick steering, B handbrake, Start =
+  car back to the start pose, LB/RB power level (25-100 %, starts at 55 %), Y steering assist on/off,
+  X traction control on/off (off by default). Changes show at the bottom of the window.
+- Handling: stick deadzone and response curve, steering eased in and out, steering assist (full stick
+  scales down with speed to about the grip limit, 12 m/s^2), traction control when on (throttle ramps
+  and is capped at low speed, since the sim throttle is wheel torque), and coasting with light engine braking
+  off the pedals instead of the stock full brake at zero throttle. The tuning constants are at the top
+  of `Gamepad.cs`.
+- While the pad drives, VehicleController is disabled and its own manual step (Steer, Drive, wheel
+  poses) runs from the plugin with the pad's inputs, so the car physics are the stock ones.
+
 The sim sends one sensor frame per rendered frame, so the small low-quality window is what
 gives a fast control loop: about 104-112 frames/s from a freshly started sim, falling to
 ~40-55 after hours of running (cause not found, `known_errors.md` T8), against about 12 Hz

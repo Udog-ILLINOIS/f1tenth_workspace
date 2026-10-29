@@ -16,6 +16,7 @@ F1Tenth/  ───────────────────────�
 ├── .githooks/   (git: structure check)       │
 ├── .claude/hooks/ + settings.json (Claude)   │
 ├── sim.sh  autodrive.sh  forzaeth.sh         │
+├── getup.sh  go.sh  (sim up / race)         │
 ├── docker/                                   │  your files, committed
 ├── docs/*.md                                 │  directly in f1tenth
 ├── racelines/{autodrive_roboracer,iros2026}  │
@@ -24,7 +25,7 @@ F1Tenth/  ───────────────────────�
 │
 ├── autodrive/
 │   ├── simulator_multitrack/                 ✗ local only ◄── ./autodrive.sh fetch ── AutoDRIVE  release f1tenth_multitrack_v3 (f3b447a)
-│   │                                         (the local build is track_builder 7ba8a65: + Mapping map placement kept through resets, floor only on the track; not released)
+│   │                                         (the local build is track_builder e61cea1: + Mapping map placement kept through resets, floor only on the track, gamepad in Manual; not released)
 │   ├── track_builder/  ═══ submodule ═══════════════════► AutoDRIVE  (f1tenth_multitrack) ┐
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
 │
