@@ -34,10 +34,13 @@ F1Tenth/  ───────────────────────�
 │   │   └── fork main 59975d9 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
 │   │       search / re-anchoring, review fixes, hybrid raceline-first search, MCL re-anchor agreement/burst
 │   │       hold, build_raceline mintime fix + fallback + provenance, MCL expected start pose (7 ahead, not PR'd)
-│   │       submodule checkout on fork main 59975d9, clean; Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
-│   │       fork has only main: test_pr15_gap_follow, classical_overtaking, mcl_merge merged and deleted 2026-10-27
-│   │       stash@{0}: overtaking idea (mintime raceline segment around the obstacle, teleop, deps); conflicts
-│   │                  with 3affd53 in tum_mintime.patch, raceline.py, docs/pipeline.md
+│   │       submodule checkout on local branch mcl_iros_fix (from 59975d9, MCL fit gates, uncommitted WIP);
+│   │       Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
+│   │       fork branches: main; overtaking_mintime_segment 4f7c1ca = main 59975d9 + offline overtaking
+│   │       segments (plan_segment, TUM open-segment patch; needs image sigrobotics-overtaking:dev or a rebuild),
+│   │       teleop hold keys; not PR'd. test_pr15_gap_follow, classical_overtaking, mcl_merge deleted 2026-10-27
+│   │       local only: pp_adaptive_lookahead (from 59975d9, curvature-capped pure pursuit lookahead, WIP)
+│   │       stash@{0}: overtaking idea, now committed as overtaking_mintime_segment 4f7c1ca (kept as backup)
 │   │       stash@{1}: older WIP (segments, teleop, docs)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
