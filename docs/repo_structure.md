@@ -32,12 +32,13 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── fork main c812cec = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
+│   │   └── fork main fc79b0d = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
 │   │       search / re-anchoring, review fixes, hybrid raceline-first search, MCL re-anchor agreement/burst
 │   │       hold, build_raceline mintime fix + fallback + provenance, MCL expected start pose, MCL fit-gated
 │   │       re-anchor/relocate + per-message odometry jumps 745fad5, full-stack review fixes a21e998,
-│   │       merge of pp_adaptive_lookahead c812cec (12 ahead of SIGRobotics main, not PR'd)
-│   │       submodule checkout on fork main c812cec, clean;
+│   │       merge of pp_adaptive_lookahead c812cec,
+│   │       adaptive lookahead on by default fc79b0d (13 ahead of SIGRobotics main, not PR'd)
+│   │       submodule checkout on fork main fc79b0d, clean;
 │   │       Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
 │   │       fork branches: main; overtaking_mintime_segment 4f7c1ca = main 59975d9 + offline overtaking
 │   │       segments (plan_segment, TUM open-segment patch; needs image sigrobotics-overtaking:dev or a rebuild),
