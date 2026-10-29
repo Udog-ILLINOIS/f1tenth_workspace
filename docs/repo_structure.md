@@ -31,10 +31,11 @@ F1Tenth/  ───────────────────────�
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
 │   │   ├── ws/src/{autodrive_bridge,perception,planning,control}, ws/scripts/   (full sim stack)
-│   │   └── fork main 59975d9 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
+│   │   └── fork main 745fad5 = SIGRobotics main 1ac7388 (PRs #16, #17 MCL via #18) + map_view + MCL global
 │   │       search / re-anchoring, review fixes, hybrid raceline-first search, MCL re-anchor agreement/burst
-│   │       hold, build_raceline mintime fix + fallback + provenance, MCL expected start pose (7 ahead, not PR'd)
-│   │       submodule checkout on local branch mcl_iros_fix (from 59975d9, MCL fit gates, uncommitted WIP);
+│   │       hold, build_raceline mintime fix + fallback + provenance, MCL expected start pose, MCL fit-gated
+│   │       re-anchor/relocate + per-message odometry jumps 745fad5 (8 ahead, not PR'd)
+│   │       submodule checkout on fork main 745fad5, clean;
 │   │       Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
 │   │       fork branches: main; overtaking_mintime_segment 4f7c1ca = main 59975d9 + offline overtaking
 │   │       segments (plan_segment, TUM open-segment patch; needs image sigrobotics-overtaking:dev or a rebuild),
