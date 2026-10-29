@@ -2,7 +2,7 @@
 # Map the sim's current track and make the new map that track's default (what ./go.sh races).
 #   ./map.sh [TRACK] [map_track.sh args...]
 #   ./map.sh                       wall follower drives 2 laps on the sim's current track
-#   ./map.sh berlin --laps 3       switch the sim to berlin first; 3 laps
+#   ./map.sh berlin --laps 3       switch the sim to berlin first; 3 laps (also --laps=3, --laps:=3, laps:=3)
 #   ./map.sh --gap-follow          follow the gap drives instead (experimental); --manual: drive by hand
 #                                  (ros2 run autodrive_bridge teleop_keyboard in the container)
 # Needs ./getup.sh first (container, bridge, connected sim). The map goes to tracks/<track>_<date>_<time>/
@@ -21,10 +21,23 @@ tracks="$root/planners/sigrobotics/ws/tracks"
 
 track=
 if [ $# -gt 0 ] && [[ "$1" != -* && "$1" != *:=* ]]; then track=$1; shift; fi
-follow=--wall-follow; args=()
-for a in "$@"; do
-  case "$a" in --wall-follow|--gap-follow) follow=$a ;; --manual) follow= ;; *) args+=("$a") ;; esac
+follow=--wall-follow; args=(); laps=
+while [ $# -gt 0 ]; do   # laps as --laps 3, --laps=3, --laps:=3 or laps:=3
+  case "$1" in
+    --wall-follow|--gap-follow) follow=$1 ;;
+    --manual) follow= ;;
+    --laps) laps=${2:-}; shift ;;
+    --laps=*|--laps:=*|laps:=*) laps=${1#*=} ;;
+    --*) echo "unknown option $1 (--wall-follow | --gap-follow | --manual | --laps N)" >&2; exit 1 ;;
+    *:=*) args+=("$1") ;;
+    *) echo "unexpected argument $1 (TRACK goes first; follower args look like speed:=1.2)" >&2; exit 1 ;;
+  esac
+  shift
 done
+if [ -n "$laps" ]; then
+  [[ "$laps" =~ ^[1-9][0-9]*$ ]] || { echo "--laps needs a number of laps, got '$laps'" >&2; exit 1; }
+  args=(--laps "$laps" ${args[@]+"${args[@]}"})
+fi
 sim_track=$(python3 "$root/autodrive/map_feed.py" --current)
 [ -n "$track" ] || track=$sim_track
 if [ "$track" != "$sim_track" ]; then
