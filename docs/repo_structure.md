@@ -38,7 +38,8 @@ F1Tenth/  ───────────────────────�
 │   │       re-anchor/relocate + per-message odometry jumps 745fad5, full-stack review fixes a21e998,
 │   │       merge of pp_adaptive_lookahead c812cec, adaptive lookahead on by default fc79b0d,
 │   │       test_pure_pursuit off-case fix d8a48d1, map_view removed 291cfee (sim tooling, to move to the
-│   │       AutoDRIVE side; the app's Mapping tab gets no data until then). PR'd as SIGRobotics #19 (open)
+│   │       AutoDRIVE side; the app's Mapping tab gets no data until then). SIGRobotics #19 merged 2026-10-29;
+│   │       fork main is 3 commits behind SIGRobotics main 1dd15f8 (#19 merge, #20 steering feedback units)
 │   │       submodule checkout on fork main 291cfee, clean;
 │   │       Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
 │   │       fork branches: main; overtaking_mintime_segment 4f7c1ca = main 59975d9 + offline overtaking
