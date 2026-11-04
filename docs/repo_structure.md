@@ -40,10 +40,11 @@ F1Tenth/  ───────────────────────�
 │   │       test_pure_pursuit off-case fix d8a48d1, map_view removed 291cfee (sim tooling, to move to the
 │   │       AutoDRIVE side; the app's Mapping tab gets no data until then). SIGRobotics #19 merged 2026-10-29;
 │   │       fork main is 3 commits behind SIGRobotics main 1dd15f8 (#19 merge, #20 steering feedback units)
-│   │       submodule checkout on fork main 291cfee, clean;
+│   │       fork main 6f33b94 = overtaking segments (plan_segment, segment_planner_node segments:=true) + pass line
+│   │       (pass_line:=true default); needs an image rebuild (TUM open-segment patch). Checkout on fork main 6f33b94;
 │   │       Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
 │   │       fork branches: main; overtaking_mintime_segment 4f7c1ca = main 59975d9 + offline overtaking
-│   │       segments (plan_segment, TUM open-segment patch; needs image sigrobotics-overtaking:dev or a rebuild),
+│   │       segments (superseded by fork main 6f33b94; plan_segment, TUM open-segment patch),
 │   │       teleop hold keys; not PR'd. test_pr15_gap_follow, classical_overtaking deleted 2026-10-27;
 │   │       mcl_merge (local) and pp_adaptive_lookahead (merged into main) deleted 2026-10-29
 │   │       stash@{0}: overtaking idea, now committed as overtaking_mintime_segment 4f7c1ca (kept as backup)
