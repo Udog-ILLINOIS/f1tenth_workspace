@@ -48,6 +48,12 @@ F1Tenth/  ───────────────────────�
 │   │       teleop hold keys; not PR'd. test_pr15_gap_follow, classical_overtaking deleted 2026-10-27;
 │   │       mcl_merge (local) and pp_adaptive_lookahead (merged into main) deleted 2026-10-29
 │   │       stash@{0}: overtaking idea, now committed as overtaking_mintime_segment 4f7c1ca (kept as backup)
+│   │       Review of open SIGRobotics PRs (2026-11-04), fork branches, each = fork main 6f33b94 + SIGRobotics
+│   │       main 1dd15f8 (#20) + the PRs + review fixes; not PR'd yet:
+│   │         review/pr21-map-controller   PR #21 (MAP controller, bridge /clock, tire slip tools)
+│   │         review/perception-pr22-pr23  PRs #22 (localization_debug) + #23 (SLAM Toolbox mapping), same system
+│   │         review/integration 03195cc   both merged + cross-PR fixes; workspace pointer here (claude/roboracer-prs-review-9ja9jl)
+│   │       needs an image rebuild (#23 adds ros-humble-slam-toolbox and the slam_graph_tools C++ package)
 │   │       stash@{1}: older WIP (segments, teleop, docs)
 │   └── forzaeth/
 │       ├── autodrive_forzaeth/               your files, committed
