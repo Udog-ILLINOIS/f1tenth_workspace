@@ -54,6 +54,8 @@ F1Tenth/  ───────────────────────�
 │   │         review/perception-pr22-pr23 f7344bb PRs #22 (localization_debug) + #23 (SLAM Toolbox mapping), same system
 │   │         review/integration 4b410eb  both merged + cross-PR fixes; workspace pointer here (claude/roboracer-prs-review-dyhnyq)
 │   │         review/perception-localization, claude/roboracer-prs-review-dyhnyq: duplicates of the above, to delete
+│   │         review/upstream-fixes-pr21-pr22 27b56c8  SIGRobotics main 1dd15f8 + #21 + #22 + their review fixes (no fork
+│   │           commits): PR to SIGRobotics once #21 and #22 are merged there; #23 conflicts with #21, left on its branch
 │   │       needs an image rebuild (#23 adds ros-humble-slam-toolbox and the slam_graph_tools C++ package)
 │   │       stash@{1}: older WIP (segments, teleop, docs)
 │   └── forzaeth/

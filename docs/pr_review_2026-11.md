@@ -17,6 +17,14 @@ Each = fork main `6f33b94` + SIGRobotics main `1dd15f8` (#20, steering feedback 
 Duplicates from a second review pass, safe to delete (this session's git proxy refused branch deletes):
 `review/perception-localization`, `claude/roboracer-prs-review-dyhnyq` on the fork.
 
+## Upstream plan (2026-11-05)
+
+#21 and #22 merge cleanly into SIGRobotics main; #23 then conflicts (README.md, ws/scripts/map_track.sh), so it
+stays on `review/perception-pr22-pr23` for now. `review/upstream-fixes-pr21-pr22` = SIGRobotics main + #21 + #22 +
+their review fixes, with none of our fork-only commits (tests: control 98, perception 117, planning 63, scripts 24
+passed; bridge 53 passed + the IPv6-only failure). After #21 and #22 are merged upstream, open the PR
+`Udog-ILLINOIS:review/upstream-fixes-pr21-pr22` -> `SIGRobotics-UIUC:main`.
+
 ## The PRs
 
 ### #21 MAP as an optional racing controller (thegiraffe1)
