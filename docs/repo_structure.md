@@ -44,6 +44,11 @@ F1Tenth/  ───────────────────────�
 │   │       fork main 6f33b94 = overtaking segments (plan_segment, segment_planner_node segments:=true) + pass line
 │   │       (pass_line:=true default); needs an image rebuild (TUM open-segment patch). Checkout on fork main 6f33b94;
 │   │       Docker image rebuilt 2026-10-28 (TUM one-row safe_traj)
+│   │       local (not pushed): integrate_all aa4fc95 = fork main + SIGRobotics main aa921ed + open PR #24 (lap logger);
+│   │       pr24 aabd4bb (checkout of SIGRobotics PR #24)
+│   │       fork review branches (2026-11-04/05, reviews of #21-#23): review/{integration, upstream-fixes,
+│   │       pr21-map-controller, perception-pr22-pr23, perception-localization, upstream-fixes-pr21-pr22},
+│   │       claude/roboracer-prs-review-dyhnyq
 │   │       fork branches: main; overtaking_mintime_segment 4f7c1ca = main 59975d9 + offline overtaking
 │   │       segments (superseded by fork main 6f33b94; plan_segment, TUM open-segment patch),
 │   │       teleop hold keys; not PR'd. test_pr15_gap_follow, classical_overtaking deleted 2026-10-27;
