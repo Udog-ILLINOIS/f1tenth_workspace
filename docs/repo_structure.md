@@ -39,7 +39,7 @@ F1Tenth/  ───────────────────────�
 │   │       merge of pp_adaptive_lookahead c812cec, adaptive lookahead on by default fc79b0d,
 │   │       test_pure_pursuit off-case fix d8a48d1, map_view removed 291cfee (sim tooling, to move to the
 │   │       AutoDRIVE side; the app's Mapping tab gets no data until then). SIGRobotics #19 merged 2026-10-29;
-│   │       as of 2026-11-07 fork main is 1 ahead (6f33b94, not PR'd) and 19 behind SIGRobotics main aa921ed
+│   │       as of 2026-11-11 fork main is 1 ahead (6f33b94, not PR'd) and 37 behind SIGRobotics main e6372b1 (through #27)
 │   │       (#20 steering feedback units, #21 ETH MAP controller, #22 localization debug logger, #23 SLAM Toolbox)
 │   │       fork main 6f33b94 = overtaking segments (plan_segment, segment_planner_node segments:=true) + pass line
 │   │       (pass_line:=true default); needs an image rebuild (TUM open-segment patch). Checkout on fork main 6f33b94;
