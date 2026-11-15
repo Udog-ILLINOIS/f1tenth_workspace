@@ -25,7 +25,7 @@ F1Tenth/  ───────────────────────�
 │
 ├── autodrive/
 │   ├── simulator_multitrack/                 ✗ local only ◄── ./autodrive.sh fetch ── AutoDRIVE  release f1tenth_multitrack_v3 (f3b447a)
-│   │                                         (the local build is track_builder e61cea1: + Mapping map placement kept through resets, floor only on the track, gamepad in Manual; not released)
+│   │                                         (the build is track_builder 91b65ed on f1tenth_multitrack: + Mapping map placement kept through resets, floor only on the track, gamepad in Manual, MultiCar (--cars N); pushed to the fork, not released)
 │   ├── track_builder/  ═══ submodule ═══════════════════► AutoDRIVE  (f1tenth_multitrack) ┐
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
 │   ├── driver_env.sh driver_compose.yml      your files: per-driver containers (multi-car)
