@@ -1,0 +1,11 @@
+# Driver N of a multi-car sim (MultiCar.cs), layered on the club stack's own compose file without changing it:
+#   docker compose -p sigrobotics_dN -f planners/sigrobotics/docker-compose.yml -f autodrive/driver_compose.yml up -d
+# with BRIDGE_PORT=4566+N, FOXGLOVE_PORT=8764+N, ROS_DOMAIN_ID=N (autodrive/driver_env.sh sets them).
+# The bridge inside stays on 4567; ROS_DOMAIN_ID keeps the drivers' topics apart.
+services:
+  ros:
+    ports: !override
+      - "${BRIDGE_PORT}:4567"     # AutoDRIVE bridge (car N's port)
+      - "${FOXGLOVE_PORT}:8765"   # Foxglove
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}

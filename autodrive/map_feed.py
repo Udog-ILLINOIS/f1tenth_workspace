@@ -5,20 +5,31 @@
     autodrive/map_feed.py --current   print the sim's current track name and exit
 
 Polls the app's control port (127.0.0.1:4580) for the current track and publishes that track's
-tracks/<track>/map.{pgm,yaml} on /map (latched, like map_server) in the club stack container. The
-bridge's map_view node sends /map to the Mapping tab, so the bridge must be running (getup.sh starts
-it). Switching track in the sim republishes the new track's map (none saved: nothing is published).
+tracks/<track>/map.{pgm,yaml} on /map (latched, like map_server) in the club stack container.
+Switching track in the sim republishes the new track's map (none saved: nothing is published).
 
-The publisher runs in the container through one `docker compose exec`, and gets track names on its
-stdin; it exits when this script does (stdin closes).
+It also runs autodrive/map_view_node.py, which sends that map, the car's pose and the overtaking lines
+to the Mapping tab.
+
+Both run in the container through one `docker compose exec` each, and get track names on their
+stdin; they exit when this script does (stdin closes).
+
+One feed at a time: a new feed stops any older one (pid in $TMPDIR/f1tenth_map_feed.pid), and a feed
+whose parent is gone (getup.sh stopped, reparented to launchd) exits. Two feeds each keep a map_view
+client on the app's port 4581, a newer client replaces the older there, and they then take turns
+forever: 2026-11-12..14 two orphaned feeds made the app rebuild its map ~690 times, stalling the sim
+(frames to the bridges 30-45/s, 150-200 gaps > 60 ms per race, crashes) until they were killed.
 """
+import signal
 import json
 import os
 import socket
 import subprocess
 import sys
+import tempfile
 import time
 
+PIDFILE = os.path.join(tempfile.gettempdir(), 'f1tenth_map_feed.pid')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COMPOSE = ['docker', 'compose', '-f', os.path.join(ROOT, 'planners', 'sigrobotics', 'docker-compose.yml')]
 CTL = ('127.0.0.1', int(os.environ.get('AUTODRIVE_CONTROL_PORT', 4580)))
@@ -106,10 +117,60 @@ def current_track():
     return cur.lower()
 
 
-def start_publisher():
+def start_publisher(code=PUBLISHER):
     cmd = 'source /opt/ros/humble/setup.bash; exec python3 -u -c "$0"'
-    return subprocess.Popen(COMPOSE + ['exec', '-T', 'ros', 'bash', '-c', cmd, PUBLISHER],
+    return subprocess.Popen(COMPOSE + ['exec', '-T', 'ros', 'bash', '-c', cmd, code],
                             stdin=subprocess.PIPE, text=True)
+
+
+def start_view():
+    with open(os.path.join(ROOT, 'autodrive', 'map_view_node.py')) as f:
+        return start_publisher(f.read())
+
+
+def is_feed(pid):
+    """pid is a running map_feed.py (not a reused pid)."""
+    try:
+        out = subprocess.run(['ps', '-o', 'command=', '-p', str(pid)], capture_output=True, text=True).stdout
+    except OSError:
+        return False
+    # a python running this script ("python3 .../autodrive/map_feed.py"), not a shell whose command line
+    # merely mentions it, nor a one-shot --current
+    w = out.split()
+    return (len(w) >= 2 and 'ython' in os.path.basename(w[0]) and w[1].endswith('autodrive/map_feed.py')
+            and '--current' not in w)
+
+
+def take_over():
+    """Stop every other feed (the pid file's, and any stray one), then record ours."""
+    others = set()
+    try:
+        others.add(int(open(PIDFILE).read().split()[0]))
+    except (OSError, ValueError, IndexError):
+        pass
+    try:   # strays from before the pid file existed
+        out = subprocess.run(['pgrep', '-f', 'autodrive/map_feed.py'], capture_output=True, text=True).stdout
+        others.update(int(x) for x in out.split())
+    except (OSError, ValueError):
+        pass
+    others.discard(os.getpid())
+    for pid in [p for p in others if is_feed(p)]:
+        print(f'[map_feed] stopping the older map feed (pid {pid}): one feed at a time', flush=True)
+        try:
+            os.kill(pid, signal.SIGTERM)
+        except OSError:
+            continue
+        for _ in range(30):
+            if not is_feed(pid):
+                break
+            time.sleep(0.1)
+        else:
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except OSError:
+                pass
+    with open(PIDFILE, 'w') as f:
+        f.write(f'{os.getpid()}\n')
 
 
 def main():
@@ -119,18 +180,50 @@ def main():
             sys.exit('no answer on the sim control port (is the sim running?)')
         print(track)
         return
-    pub, sent = None, None
+    take_over()
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))   # -> finally: the container side stops too
+    procs = []
+    try:
+        feed(procs)
+    finally:
+        for p in procs:
+            if p is not None and p.poll() is None:
+                try:
+                    p.stdin.close()   # the container side exits on EOF
+                except OSError:
+                    pass
+                try:
+                    p.wait(timeout=3)
+                except subprocess.TimeoutExpired:
+                    p.kill()
+        try:
+            if open(PIDFILE).read().split()[0] == str(os.getpid()):
+                os.remove(PIDFILE)
+        except (OSError, IndexError):
+            pass
+
+
+def feed(procs):
+    parent = os.getppid()
+    pub, view, sent = None, None, None
     while True:
+        if os.getppid() != parent:   # whoever started us (getup.sh) is gone: never live on as an orphan
+            print('[map_feed] parent gone: exiting', flush=True)
+            return
         if pub is None or pub.poll() is not None:
             pub, sent = start_publisher(), None
+        if view is None or view.poll() is not None:
+            view, sent = start_view(), None
+        procs[:] = [pub, view]
         track = current_track()
         if track and track != sent:
             try:
-                pub.stdin.write(track + '\n')
-                pub.stdin.flush()
+                for p in (pub, view):
+                    p.stdin.write(track + '\n')
+                    p.stdin.flush()
                 sent = track
             except OSError:
-                pub = None
+                pub = view = None
         time.sleep(1)
 
 

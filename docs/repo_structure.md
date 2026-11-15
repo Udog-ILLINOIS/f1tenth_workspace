@@ -16,7 +16,7 @@ F1Tenth/  ───────────────────────�
 ├── .githooks/   (git: structure check)       │
 ├── .claude/hooks/ + settings.json (Claude)   │
 ├── sim.sh  autodrive.sh  forzaeth.sh         │
-├── getup.sh go.sh map.sh (up/race/map)    │
+├── getup.sh go.sh race_cars.sh map.sh (up/race/2-car race/map)  │
 ├── docker/                                   │  your files, committed
 ├── docs/*.md                                 │  directly in f1tenth
 ├── racelines/{autodrive_roboracer,iros2026}  │
@@ -28,6 +28,10 @@ F1Tenth/  ───────────────────────�
 │   │                                         (the local build is track_builder e61cea1: + Mapping map placement kept through resets, floor only on the track, gamepad in Manual; not released)
 │   ├── track_builder/  ═══ submodule ═══════════════════► AutoDRIVE  (f1tenth_multitrack) ┐
 │   └── devkit/         ═══ submodule (shallow) ═════════► AutoDRIVE  (AutoDRIVE-Devkit)   ┴───► Tinker-Twins/AutoDRIVE
+│   ├── driver_env.sh driver_compose.yml      your files: per-driver containers (multi-car)
+│   ├── map_feed.py map_view_node.py          your files: map to the sim's Mapping tab
+│   ├── ghost_replay.py multicar_test.py      your files: multi-car replay and test
+│   └── truth_recorder.py truth_analysis.py   your files: pose estimate vs sim ground truth
 │
 ├── planners/
 │   ├── sigrobotics/    ═══ submodule ═══════════════════► roboracer  (main)  club stack, PRs ─► SIGRobotics-UIUC/roboracer
